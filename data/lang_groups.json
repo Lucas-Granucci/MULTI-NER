@@ -1,30 +1,30 @@
 {
     "Germanic": {
-        "low_resource_languages": ["ang", "li", "nds", "fy"],
-        "high_resource_languages": ["de", "nl", "en"]
+        "low_resource": ["ang", "li", "nds", "fy"],
+        "high_resource": ["de", "nl", "en"]
     },
     "Romance": {
-        "low_resource_languages": ["ast", "fur", "rm", "scn"],
-        "high_resource_languages": ["es", "it", "fr", "pt"]
+        "low_resource": ["ast", "fur", "rm", "scn"],
+        "high_resource": ["es", "it", "fr", "pt"]
     },
     "Slavic": {
-        "low_resource_languages": ["hsb", "csb", "szl"],
-        "high_resource_languages": ["ru", "pl", "cs", "bg"]
+        "low_resource": ["hsb", "csb", "szl"],
+        "high_resource": ["ru", "pl", "cs", "bg"]
     },
     "South_Asian_Indic": {
-        "low_resource_languages": ["or", "sa", "gu", "pa"],
-        "high_resource_languages": ["hi", "bn", "ur"]
+        "low_resource": ["or", "sa", "gu", "pa"],
+        "high_resource": ["hi", "bn", "ur"]
     },
     "Sino_Tibetan": {
-        "low_resource_languages": ["hak", "wuu", "gan"],
-        "high_resource_languages": ["zh", "zh-yue"]
+        "low_resource": ["hak", "wuu", "gan"],
+        "high_resource": ["zh", "zh-yue"]
     },
     "Turkic": {
-        "low_resource_languages": ["ba", "crh", "tk"],
-        "high_resource_languages": ["tr", "az", "kk"]
+        "low_resource": ["ba", "crh", "tk"],
+        "high_resource": ["tr", "az", "kk"]
     },
     "Austronesian": {
-        "low_resource_languages": ["ceb", "map-bms", "min"],
-        "high_resource_languages": ["tl", "id", "ms"]
+        "low_resource": ["ceb", "map-bms", "min"],
+        "high_resource": ["tl", "id", "ms"]
     }
 }

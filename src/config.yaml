@@ -1,0 +1,64 @@
+# General project configuration
+project:
+  name: MULTI-NER
+  version: 1.0
+  description: "Research title: Cross-lingual transfer learning and pseudo-labeling for multilingual named entity recognition"
+
+# Languages configuration
+languages:
+  path_to_codes: "data/lang_codes.json"
+  path_to_dist: "data/lang_dist.json"
+  path_to_groups: "data/lang_groups.json"
+
+# Data paths
+data:
+  output_dir: "/path/to/output"
+  label2id: {
+    'O': 0,
+    'B-PER': 1,
+    'I-PER': 2,
+    'B-ORG': 3,
+    'I-ORG': 4,
+    'B-LOC': 5, 
+    'I-LOC': 6
+}
+
+# Tokenizer settings
+tokenizer:
+  bert_model: "google-bert/bert-base-multilingual-cased"
+
+# ---------------------------- TEMPORARY PLACEHOLDERS ---------------------------- #
+
+# Model settings
+model:
+  type: "transformer"  # e.g., transformer, BiLSTM-CRF
+  name: "xlm-roberta-base"
+  num_labels: 5  # Number of NER labels
+  dropout: 0.3
+  max_seq_length: 128
+  hidden_size: 768
+  device: "cuda"
+
+# Training parameters
+training:
+  batch_size: 32
+  learning_rate: 5e-5
+  num_epochs: 10
+  weight_decay: 0.01
+  warmup_steps: 500
+
+# Pseudo-labeling configuration
+pseudo_labeling:
+  enabled: true
+  confidence_threshold: 0.7
+  max_iterations: 3
+
+# Cross-lingual transfer settings
+cross_lingual_transfer:
+  enabled: true
+  method: "zero-shot"  # other options: fine-tuning, adversarial training
+
+# Logging configuration
+logging:
+  level: "INFO"
+  log_path: "/path/to/log_file.log"
