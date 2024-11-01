@@ -12,8 +12,8 @@ languages:
 
 # Data paths
 data:
-  output_dir: "/path/to/output"
-  label2id: {
+  augumentation_factor: 3 # Factor to multiply amount of low_resource language data by to obtain amount for cross-lingual transfer
+  label2id: { # Mapping of NER tag labels to ids
     'O': 0,
     'B-PER': 1,
     'I-PER': 2,
@@ -21,12 +21,15 @@ data:
     'I-ORG': 4,
     'B-LOC': 5, 
     'I-LOC': 6
-}
+  }
 
 # Tokenizer settings
 tokenizer:
   bert_model: "google-bert/bert-base-multilingual-cased"
 
+# Training parameters
+training:
+  batch_size: 32
 # ---------------------------- TEMPORARY PLACEHOLDERS ---------------------------- #
 
 # Model settings
@@ -38,14 +41,6 @@ model:
   max_seq_length: 128
   hidden_size: 768
   device: "cuda"
-
-# Training parameters
-training:
-  batch_size: 32
-  learning_rate: 5e-5
-  num_epochs: 10
-  weight_decay: 0.01
-  warmup_steps: 500
 
 # Pseudo-labeling configuration
 pseudo_labeling:
