@@ -22,7 +22,7 @@ To get started, clone the repository and install the required dependencies:
 ```bash
 git clone https://github.com/yourusername/MULTI-NER.git
 cd MULTI-NER
-pip install -r requirements.txt
+conda env create -f environment.yml
 ```
 
 ## Usage
