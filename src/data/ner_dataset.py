@@ -8,8 +8,6 @@ from torch.utils.data import Dataset
 class NER_Dataset(Dataset):
     def __init__(self, dataframe: pd.DataFrame, config, word_pad_idx=0, label_pad_idx=-1):
         self.tokenizer = BertTokenizer.from_pretrained(config["tokenizer"]["bert_model"], do_lower_case=True)
-        self.label2id = config["data"]["label2id"]
-        self.id2label = {_id : _label for _label, _id in self.label2id.items()}
         self.dataset = self.preprocess(dataframe)
         self.word_pad_idx = word_pad_idx
         self.label_pad_idx = label_pad_idx
@@ -58,4 +56,45 @@ class NER_Dataset(Dataset):
         return len(self.dataset)
     
     def collate_fn(self, batch):
-        pass
+        sentences = [x[0] for x in batch]
+        labels = [x[1] for x in batch]
+
+        # Batch length
+        batch_len = len(sentences)
+
+        # Compute length of longest sentence in batch
+        max_len = max([len(s[0]) for s in sentences])
+        max_label_len = 0
+        
+        # Padding data
+        batch_data = self.word_pad_idx * np.ones((batch_len, max_len))
+        batch_label_starts = []
+
+        # Padding and aligning
+        for j in range(batch_len):
+            current_len = len(sentences[j][0])
+            batch_data[j][:current_len] = sentences[j][0]
+
+            label_start_idx = sentences[j][-1]
+            label_starts = np.zeros(max_len)
+
+            label_starts[[idx for idx in label_start_idx if idx < max_len]] = 1
+            batch_label_starts.append(label_starts)
+            max_label_len = max(int(sum(label_starts)), max_label_len)
+
+        # Padding label
+        batch_labels = self.label_pad_idx * np.ones((batch_len, max_label_len))
+        for j in range(batch_len):
+            current_tags_len = len(labels[j])
+            batch_labels[j][:current_tags_len] = labels[j]
+
+        # Convert data to torch LongTensors
+        batch_data = torch.tensor(batch_data, dtype=torch.long)
+        batch_label_starts = torch.tensor(batch_label_starts, dtype=torch.long)
+        batch_labels = torch.tensor(batch_labels, dtype=torch.long)
+
+        # Shift tensors to GPU if available
+        batch_data = batch_data.to(self.device)
+        batch_label_starts = batch_label_starts.to(self.device)
+        batch_labels = batch_labels.to(self.device)
+        return [batch_data, batch_label_starts, batch_labels]
