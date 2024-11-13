@@ -18,30 +18,28 @@ class NER_Dataset(Dataset):
         sentences = []
         labels = []
 
-        # Process each row in dataframe
-        for _, row in dataframe.iterrows():
+        origin_sentences = dataframe["tokens"].tolist()
+        origin_labels = dataframe["ner_tags"].tolist()
+
+        for line in origin_sentences:
             words = []
             word_lens = []
 
-            # Tokenize each word and calculate token length
-            for token in row["tokens"]:
-                tokenized = self.tokenizer.tokenize(token)
-                words.append(tokenized)
-                word_lens.append(len(token))
+            for token in line:
+                word_tokens = self.tokenizer.tokenize(token)
+                words.append(word_tokens)
+                word_lens.append(len(word_tokens))
 
-            # Flatten tokenized words and add [CLS] at the beginning
-            tokens = ['[CLS]'] + [item for token in words for item in token]
+            words = ['[CLS]'] + [item for sublist in words for item in sublist]
+
+            # Calculate the starting index for each word
             token_start_idxs = 1 + np.cumsum([0] + word_lens[:-1])
 
-            # Convert tokens to token ids
-            sentence_ids = self.tokenizer.convert_tokens_to_ids(tokens)
-            sentences.append((sentence_ids, token_start_idxs))
+            sentences.append((self.tokenizer.convert_tokens_to_ids(words), token_start_idxs))
 
-            # Get ner tags and add to labels
-            label_ids = row["ner_tags"]
-            labels.append(label_ids)
+        for tag in origin_labels:
+            labels.append(tag) # Tags are already in ID format
 
-        # Add all processed sentences and labels to data
         for sentence, label in zip(sentences, labels):
             data.append((sentence, label))
 
@@ -92,6 +90,10 @@ class NER_Dataset(Dataset):
         batch_data = torch.tensor(batch_data, dtype=torch.long)
         batch_label_starts = torch.tensor(batch_label_starts, dtype=torch.long)
         batch_labels = torch.tensor(batch_labels, dtype=torch.long)
+
+        print("batch_data.shape: ", batch_data.shape)
+        print("batch_label_starts.shape: ", batch_label_starts.shape)
+        print("batch_labels.shape: ", batch_labels.shape)
 
         # Shift tensors to GPU if available
         batch_data = batch_data.to(self.device)

@@ -22,6 +22,16 @@ data:
     'B-LOC': 5, 
     'I-LOC': 6
   }
+  id2label: {
+    0: 'O',
+    1: 'B-PER',
+    2: 'I-PER',
+    3: 'B-ORG',
+    4: 'I-ORG',
+    5: 'B-LOC',
+    6: 'I-LOC'
+  }
+  labels: ["PER", "ORG", "LOC"]
 
 # Tokenizer settings
 tokenizer:
@@ -29,17 +39,24 @@ tokenizer:
 
 # Training parameters
 training:
-  batch_size: 32
+  epoch_num: 20 
+  min_epoch_num: 5
+  batch_size: 16
+  f1_patience: 0.00002
+  patience_num: 20
+  clip_grad: 1.0
+  learning_rate: 0.00005
 # ---------------------------- TEMPORARY PLACEHOLDERS ---------------------------- #
 
 # Model settings
 model:
   type: "transformer"  # e.g., transformer, BiLSTM-CRF
-  name: "xlm-roberta-base"
-  num_labels: 5  # Number of NER labels
-  dropout: 0.3
-  max_seq_length: 128
+  name: "google-bert/bert-base-multilingual-cased"
   hidden_size: 768
+  num_labels: 7  # Number of NER labels
+  hidden_dropout_prob: 0.1
+  lstm_dropout_prob: 0.1
+  model_dir: "src/models/pretrained"
   device: "cuda"
 
 # Pseudo-labeling configuration
