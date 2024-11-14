@@ -1,20 +1,16 @@
+import os
+
+from train import train_model
+from data.NERDataset import NERDataset
+from data.data_loader import LanguageDataLoader
+from models.BertModel import BERTBiLSTMCRF
+
 from utils.logging import print_message
 from utils.load_config import load_config
 
-from data.ner_dataset import NER_Dataset
-from data.NERDataset import NERDataset
-from data.data_loader import LanguageDataLoader
-
-from models.bert_bilstm_crf import BertBiLstmCRF
-from models.BertModel import BERTBiLSTMCRF
-
-from train import train
-from train_mine import train_model
-
-from torch.optim import AdamW
-from transformers import BertConfig
 from torch.utils.data import DataLoader
-from transformers import get_linear_schedule_with_warmup
+
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 
 # ------------------- Load config.yaml file ------------------- #
 
@@ -30,8 +26,11 @@ language_data = dataloader.load_language_groups()
 
 print_message("Creating NER dataset...")
 
-nerdataset = NERDataset(language_data["Germanic"]["low_resource"]["train"], config)
-dataloader = DataLoader(nerdataset, batch_size=config["training"]["batch_size"], shuffle=True, collate_fn=nerdataset.collate_fn)
+train_nerdataset = NERDataset(language_data["Germanic"]["low_resource"]["train"], config)
+train_dataloader = DataLoader(train_nerdataset, batch_size=config["training"]["batch_size"], shuffle=True, collate_fn=train_nerdataset.collate_fn)
+
+eval_nerdataset = NERDataset(language_data["Germanic"]["low_resource"]["test"], config)
+eval_dataloader = DataLoader(eval_nerdataset, batch_size=config["training"]["batch_size"], shuffle=True, collate_fn=eval_nerdataset.collate_fn)
 
 print_message("Initializing model...")
 
@@ -39,4 +38,4 @@ model = BERTBiLSTMCRF(config["model"]["num_labels"])
 model.to(config["model"]["device"])
 
 print_message("Training...")
-train_model(model, dataloader, config["training"]["epoch_num"], config["training"]["learning_rate"], config["model"]["device"])
+train_model(model, train_dataloader, eval_dataloader, config["training"]["epoch_num"], config["training"]["learning_rate"], config["model"]["device"])

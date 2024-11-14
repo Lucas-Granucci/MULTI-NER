@@ -1,104 +1,89 @@
 import torch
-import torch.nn as nn
 from tqdm import tqdm
-from utils.metrics import f1_score
+import torch.optim as optim
+from utils.metrics import f1_score, prepare_labels
 
-def train_epoch(train_loader, model, optimizer, scheduler, epoch, config):
+def train_model(model, train_dataloader, eval_dataloader, num_epochs, learning_rate, device):
+    optimizer = optim.Adam(model.parameters(), lr=learning_rate)
+
+    for epoch in range(num_epochs):
+        train_epoch(model, train_dataloader, optimizer, epoch, num_epochs, device)
+        evaluate_epoch(model, eval_dataloader, device)
+
+def train_epoch(model, dataloader, optimizer, epoch, num_epochs, device):
     model.train()
+    total_loss = 0
+    total_tokens = 0
 
-    train_losses = 0
-    for idx, batch_samples in enumerate(tqdm(train_loader)):
-        batch_data, batch_token_starts, batch_labels = batch_samples
-        batch_masks = batch_data.gt(0)
+    all_preds = torch.tensor([], dtype=torch.long, device=device)
+    all_labels = torch.tensor([], dtype=torch.long, device=device)
 
-        loss = model((batch_data, batch_token_starts),
-                     token_type_ids=None, attention_mask=batch_masks, labels=batch_labels)[0]
-        train_losses += loss.item()
+    for idx, (input_ids, labels, attention_mask) in enumerate(pbar := tqdm(dataloader)):
 
-        # Clear previous gradients, compute gradients of all variables
-        model.zero_grad()
+        # Replace -100 in labels with 0 (or any valid tag) temporarily for CRF computation
+        labels = torch.where(labels == model.label_pad_idx, torch.tensor(0).to(labels.device), labels)
+
+        # Pass inputs through model
+        optimizer.zero_grad()
+        emissions = model(input_ids, attention_mask)
+        
+        # Calculate loss and per-token loss
+        loss = model.loss(emissions, labels, attention_mask.bool())
+        num_tokens = attention_mask.sum().item()
+        per_token_loss = loss.item() / num_tokens if num_tokens > 0 else loss.item()
+
+        # Prepare and colllect masked predictions and labels
+        masked_predictions, masked_labels = prepare_labels(emissions, labels, attention_mask)
+        all_preds = torch.cat((all_preds, masked_predictions), dim=0)
+        all_labels = torch.cat((all_labels, masked_labels), dim=0)
+
+        # Calculate F1-score and update optimizer
+        avg_f1_score = f1_score(masked_predictions, masked_labels, model.num_tags)
         loss.backward()
-
-        # Gradient clipping
-        nn.utils.clip_grad_norm_(parameters=model.parameters(), max_norm=config["clip_grad"]) # TODO figure out clip_grad
-
-        # Perform updates using calculated gradients
         optimizer.step()
-        scheduler.step()
 
-    train_loss = float(train_losses) / len(train_loader)
-    print("Epoch: {}, Train Loss: {}".format(epoch, train_loss))
+        # Update total loss and progress bar
+        total_loss += loss.item()
+        total_tokens += num_tokens
+        pbar.set_description(f"Epoch {epoch + 1}/{num_epochs}     Per-token Loss: {per_token_loss:.3f}     F1-Score: {avg_f1_score:.3f}")
 
-def train(train_loader, dev_loader, model, optimizer, scheduler, config):
+    # Calculate final loss and F1-score
+    avg_token_loss = total_loss / total_tokens
+    epoch_f1 = f1_score(all_preds, all_labels, model.num_tags)
+    print(f"Epoch {epoch + 1}/{num_epochs}     Avg Token Loss: {avg_token_loss:.4f}     Avg F1-Score: {epoch_f1:.4f}")
 
-    best_val_f1 = 0.0
-    patience_counter = 0
-
-    for epoch in range(1, config["training"]["epoch_num"] + 1):
-        train_epoch(train_loader, model, optimizer, scheduler, epoch, config)
-        val_metrics = evaluate(dev_loader, model, mode='dev')
-        val_loss = val_metrics["loss"]
-        val_f1 = val_metrics["f1"]
-
-        print("Epoch: {}, dev loss: {}, f1 score: {}".format(epoch, val_metrics['loss'], val_f1))
-
-        improve_f1 = val_f1 - best_val_f1
-        if improve_f1 > 1e-5:
-            best_val_f1 = val_f1
-            model.save_pretrained(config["model"]["model_dir"])
-            if improve_f1 < config["training"]["f1_patience"]:
-                patience_counter += 1
-            else:
-                patience_counter = 0
-        else:
-            patience_counter += 1
-
-        if (patience_counter >= config["training"]["patience_num"] and epoch > config["training"]["min_epoch_num"]):
-            print("Best F1 val: {}".format(best_val_f1))
-            break
-
-    print("Training finished")
-
-
-def evaluate(dev_loader, model, config):
+def evaluate_epoch(model, dataloader, device):
     model.eval()
-    id2label = config["data"]["id2label"]
+    total_loss = 0
+    total_tokens = 0
 
-    true_tags = []
-    pred_tags = []
-    sent_data = []
-    dev_losses = 0
+    all_preds = torch.tensor([], dtype=torch.long, device=device)
+    all_labels = torch.tensor([], dtype=torch.long, device=device)
 
     with torch.no_grad():
-        for idx, batch_samples in enumerate(dev_loader):
-            batch_data, batch_token_starts, batch_tags = batch_samples
+        for idx, (input_ids, labels, attention_mask) in enumerate(pbar := tqdm(dataloader)):
 
-            batch_masks = batch_data.gt(0) # Get padding mask
-            label_masks = batch_tags.gt(-1) # Get padding mask
+            # Replace -100 in labels with 0 (or any valid tag) temporarily for CRF computation
+            labels = torch.where(labels == model.label_pad_idx, torch.tensor(0).to(labels.device), labels)
 
-            # Compute model output and loss
-            loss = model((batch_data, batch_token_starts),
-                         token_type_ids=None, attention_mask=batch_masks, labels=batch_tags)[0]
-            dev_losses += loss.item()
+            # Pass inputs through model
+            emissions = model(input_ids, attention_mask)
+            loss = model.loss(emissions, labels, attention_mask.bool())
 
-            batch_output = model((batch_data, batch_token_starts),
-                                 token_type_ids=None, attention_mask=batch_masks)[0]
-            batch_output = model.crf.decode(batch_output, mask=label_masks)
+            # Prepare and colllect masked predictions and labels
+            masked_predictions, masked_labels = prepare_labels(emissions, labels, attention_mask)
+            all_preds = torch.cat((all_preds, masked_predictions), dim=0)
+            all_labels = torch.cat((all_labels, masked_labels), dim=0)
 
-            batch_tags = batch_tags.to('cpu').numpy()
-            pred_tags.extend([[id2label.get(idx) for idx in indices] for indices in batch_output])
-            true_tags.extend([[id2label.get(idx) for idx in indices if idx > -1] for indices in batch_tags])
-    
-    assert len(pred_tags) == len(true_tags)
+            # Calculate F1-score and update optimizer
+            avg_f1_score = f1_score(masked_predictions, masked_labels, model.num_tags)
 
-    metrics = {}
-    score = f1_score(true_tags, pred_tags, config)
-    metrics['f1'] = score['f1']
-    metrics['p'] = score['p']
-    metrics['r'] = score['r']
+            # Update total loss, total tokens and progress bar
+            total_loss += loss.item()
+            total_tokens += attention_mask.sum().item()
+            pbar.set_description(f"Evaluating:     F1-Score: {avg_f1_score:.3f}")
 
-    metrics['loss'] = float(dev_losses) / len(dev_loader)
-    return metrics
-
-        
-
+    # Calculate final loss and F1-score
+    avg_token_loss = total_loss / total_tokens
+    epoch_f1 = f1_score(all_preds, all_labels, model.num_tags)
+    print(f"Evaluating:     Avg Token Loss: {avg_token_loss:.4f}     Avg F1-Score: {epoch_f1:.4f}")
