@@ -9,6 +9,7 @@ class BERTBiLSTMCRF(nn.Module):
         self.lstm = nn.LSTM(self.bert.config.hidden_size, 128, num_layers=2, bidirectional=True, batch_first=True)
         self.fc = nn.Linear(256, num_tags)
         self.crf = CRF(num_tags, batch_first=True)
+        self.num_tags = num_tags
         self.label_pad_idx = label_pad_idx
 
     def forward(self, input_ids, attention_mask):

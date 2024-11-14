@@ -39,5 +39,4 @@ model = BERTBiLSTMCRF(config["model"]["num_labels"])
 model.to(config["model"]["device"])
 
 print_message("Training...")
-train_model(model, dataloader, config["training"]["epoch_num"], config["training"]["learning_rate"])
-#train(dataloader, dataloader, model, optimizer, scheduler, config)
+train_model(model, dataloader, config["training"]["epoch_num"], config["training"]["learning_rate"], config["model"]["device"])
