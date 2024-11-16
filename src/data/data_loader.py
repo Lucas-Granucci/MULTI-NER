@@ -8,7 +8,6 @@ class LanguageDataLoader:
     
     def __init__(self, config):
         self.path_to_lang_groups = config["languages"]["path_to_groups"]
-        self.augumentation_factor = config["data"]["augumentation_factor"]
         self.wikiann_downloader = WikiANN_Downloader()
 
     def load_language_groups(self) -> Dict[str, Any]:
@@ -31,10 +30,6 @@ class LanguageDataLoader:
 
         low_resource_train, low_resource_val, low_resource_test = self.wikiann_downloader.load_split_data(low_resource_langs, shuffle=True)
         high_resource_data = self.wikiann_downloader.load_data(high_resource_langs, shuffle=True)
-
-        # Calculate how much of the high_resource language to keep based on the augumentation factor
-        augumentation_factor = self.augumentation_factor
-        high_resource_data = high_resource_data.head( len(low_resource_train) * augumentation_factor )
 
         return {
             "low_resource": {

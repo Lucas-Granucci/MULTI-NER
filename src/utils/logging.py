@@ -1,14 +1,21 @@
-import os
+import logging
+from rich.logging import RichHandler
 from rich.text import Text
-from rich.console import Console
 
-console = Console()
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,  # Set default logging level
+    format='%(message)s',
+    datefmt='[%X]',
+    handlers=[RichHandler()]
+)
 
-def print_message(message: str, style: str = "bold blue"):
-    width = os.get_terminal_size().columns
-    line_length = ((width - len(message)) // 2) - 2
-    message = f"#{'-'*line_length} {message} {'-'*line_length}#"
-    console.print(Text(message, style=style))
+logger = logging.getLogger('rich')
 
-def print_submessage(message: str, style: str = "blue"):
-    console.print(Text(message, style=style))
+def print_message(message: str, style: str = "bold yellow"):
+    styled_message = Text(f"# {message} #", style=style)
+    logger.info(styled_message)
+
+def print_submessage(message: str, style: str = "dim"):
+    styled_message = Text(message, style=style)
+    logger.info(styled_message)

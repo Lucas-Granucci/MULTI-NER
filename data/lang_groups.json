@@ -1,6 +1,6 @@
 {
     "Germanic": {
-        "low_resource": ["en"],
-        "high_resource": ["en"]
+        "low_resource": ["is"],
+        "high_resource": ["da"]
     }
 }
