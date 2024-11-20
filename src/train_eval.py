@@ -14,6 +14,7 @@ def train_model(model, train_dataloader, test_dataloader, model_dir, config):
     optimizer = optim.Adam(model.parameters(), lr=config["training"]["learning_rate"])
 
     best_f1_score = -float('inf')
+    best_epoch = -1
 
     for epoch in range(num_epochs):
         train_epoch(model, train_dataloader, optimizer, epoch, num_epochs, device)
@@ -23,9 +24,17 @@ def train_model(model, train_dataloader, test_dataloader, model_dir, config):
 
         if epoch_f1 > best_f1_score:
             best_f1_score = epoch_f1
+            best_epoch = epoch + 1
             torch.save(model.state_dict(), model_dir)
 
-    return best_f1_score
+    return best_f1_score, best_epoch
+
+def evaluate_model(model, val_dataloader, config):
+
+    device = device = config["model"]["device"]
+    eval_f1 = evaluate_epoch(model, val_dataloader, device)
+
+    return eval_f1
 
 def train_epoch(model, dataloader, optimizer, epoch, num_epochs, device):
     model.train()

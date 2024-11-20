@@ -12,7 +12,7 @@ languages:
 
 # Data paths
 data:
-  augumentation_factor: 3 # Factor to multiply amount of low_resource language data by to obtain amount for cross-lingual transfer
+  augumentation_factor: 5 # Factor to multiply amount of low_resource language data by to obtain amount for cross-lingual transfer
   label2id: { # Mapping of NER tag labels to ids
     'O': 0,
     'B-PER': 1,
@@ -39,12 +39,8 @@ tokenizer:
 
 # Training parameters
 training:
-  epoch_num: 15
-  min_epoch_num: 5
+  epoch_num: 5
   batch_size: 64
-  f1_patience: 0.00002
-  patience_num: 20
-  clip_grad: 1.0
   learning_rate: 0.00005
 # ---------------------------- TEMPORARY PLACEHOLDERS ---------------------------- #
 
