@@ -1,16 +1,15 @@
 import torch.nn as nn
 from transformers import XLMRobertaModel
-from torchcrf import CRF
 
-class RoBERTaBiLSTMCRF(nn.Module):
+class XLMRoBERTaBiLSTM(nn.Module):
     def __init__(self, num_tags, label_pad_idx=-100):
-        super(RoBERTaBiLSTMCRF, self).__init__()
+        super(XLMRoBERTaBiLSTM, self).__init__()
         self.roberta = XLMRobertaModel.from_pretrained('xlm-roberta-base')
         self.lstm = nn.LSTM(self.roberta.config.hidden_size, 128, num_layers=2, bidirectional=True, batch_first=True)
         self.fc = nn.Linear(256, num_tags)
-        self.crf = CRF(num_tags, batch_first=True)
-        self.num_tags = num_tags
+        self.loss_fn = nn.CrossEntropyLoss(ignore_index=label_pad_idx)
         self.label_pad_idx = label_pad_idx
+        self.num_tags = num_tags
 
     def forward(self, input_ids, attention_mask):
         roberta_output = self.roberta(input_ids=input_ids, attention_mask=attention_mask)
@@ -20,7 +19,10 @@ class RoBERTaBiLSTMCRF(nn.Module):
         return emissions
 
     def loss(self, emissions, tags, mask):
-        return -self.crf(emissions, tags, mask=mask)
+        active_loss = mask.view(-1) == 1
+        active_emissions = emissions.view(-1, self.num_tags)[active_loss]
+        active_tags = tags.view(-1)[active_loss]
+        return self.loss_fn(active_emissions, active_tags)
 
     def decode(self, emissions, mask):
-        return self.crf.decode(emissions, mask=mask)
+        return emissions.argmax(dim=-1)
