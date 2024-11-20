@@ -4,7 +4,9 @@ os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 from train_eval import train_model, evaluate_model
 from data.NERDataloader import create_dataloaders
 from data.data_loader import LanguageDataLoader
-from models.BertModel import BERTBiLSTMCRF
+
+from models.BertBilstmCrf import BERTBiLSTMCRF
+from models.RobertaBilstmCrf import RoBERTaBiLSTMCRF
 
 from utils.logging import logger
 from utils.load_config import load_config
@@ -28,7 +30,8 @@ def run_experiment(language_group, output_path, use_transfer_learning=False):
     )
 
     logger.info("Initializing model...")
-    model = BERTBiLSTMCRF(NUM_LABELS).to(DEVICE)
+    #model = BERTBiLSTMCRF(NUM_LABELS).to(DEVICE)
+    model = RoBERTaBiLSTMCRF(NUM_LABELS).to(DEVICE)
 
     logger.info("Starting training...")
     best_train_f1, best_epoch = train_model(model, train_dataloader, test_dataloader, output_path, config)
