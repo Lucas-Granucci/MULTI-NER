@@ -1,3 +1,4 @@
+import gc
 import torch
 
 from utils.logging import logger
@@ -28,6 +29,9 @@ def run_experiment(Model, language, language_data, output_path, config, use_tran
         logger.info(f"Evaluation complete. Eval F1-Score: {eval_f1:.4f}")
     finally:
         del model
+        del train_dataloader, test_dataloader, val_dataloader
+
+        gc.collect()
         torch.cuda.empty_cache()
 
     return best_train_f1, eval_f1

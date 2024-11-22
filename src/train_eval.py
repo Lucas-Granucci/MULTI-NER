@@ -1,10 +1,8 @@
 import torch
-import time
 from rich.progress import Progress
 from rich.console import Console
 import torch.optim as optim
 from utils.metrics import f1_score, prepare_labels
-from numpy import mean
 
 console = Console()
 
@@ -28,7 +26,7 @@ def train_model(model, train_dataloader, test_dataloader, model_dir, config):
             best_f1_score = epoch_f1
             best_epoch = epoch + 1
             torch.save(model.state_dict(), model_dir)
-
+    del optimizer
     return best_f1_score, best_epoch
 
 def evaluate_model(model, val_dataloader, config):
