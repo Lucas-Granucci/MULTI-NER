@@ -15,6 +15,9 @@ class WikiANN_Downloader:
 
     def load_data(self, langs: list, shuffle: bool = False) -> pd.DataFrame:
 
+        if len(langs) == 1 and langs[0] == "":
+            return "No Language Code"
+
         wikiann_dataset = self.get_multilingual_dataset(langs)
         lang_dataframes = []
 

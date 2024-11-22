@@ -1,6 +1,22 @@
 {
-    "Germanic": {
-        "low_resource": ["is"],
-        "high_resource": ["da"]
+    "english": {
+        "low_resource": ["en"],
+        "high_resource": [""]
+    },
+    "arabic": {
+        "low_resource": ["ar"],
+        "high_resource": [""]
+    },
+    "spanish": {
+        "low_resource": ["es"],
+        "high_resource": [""]
+    },
+    "japanese": {
+        "low_resource": ["ja"],
+        "high_resource": [""]
+    },
+    "chinese": {
+        "low_resource": ["zh"],
+        "high_resource": [""]
     }
 }

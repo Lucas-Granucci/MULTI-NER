@@ -39,8 +39,8 @@ tokenizer:
 
 # Training parameters
 training:
-  epoch_num: 5
-  batch_size: 64
+  epoch_num: 1
+  batch_size: 32
   learning_rate: 0.00005
 # ---------------------------- TEMPORARY PLACEHOLDERS ---------------------------- #
 
