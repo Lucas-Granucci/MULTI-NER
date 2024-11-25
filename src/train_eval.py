@@ -19,9 +19,7 @@ def train_model(model, train_dataloader, test_dataloader, model_dir, config):
     with tqdm(total=num_epochs, desc="Training Progress", unit="epoch") as pbar:
         for epoch in range(num_epochs):
             # Training and evaluation
-            train_loss, train_f1 = train_epoch(
-                model, train_dataloader, optimizer, epoch, num_epochs, device
-            )
+            train_loss, train_f1 = train_epoch(model, train_dataloader, optimizer, device)
             epoch_f1 = evaluate_epoch(model, test_dataloader, device)
 
             # Save the best version of the model
@@ -57,7 +55,7 @@ def evaluate_model(model, val_dataloader, config):
     return eval_f1
 
 
-def train_epoch(model, dataloader, optimizer, epoch, num_epochs, device):
+def train_epoch(model, dataloader, optimizer, device):
     model.train()
     total_loss = 0.0
     total_f1 = 0.0
