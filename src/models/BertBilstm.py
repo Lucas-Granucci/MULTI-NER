@@ -1,11 +1,18 @@
 import torch.nn as nn
 from transformers import BertModel
 
+
 class BERTBiLSTM(nn.Module):
     def __init__(self, num_tags, label_pad_idx=-100):
         super(BERTBiLSTM, self).__init__()
-        self.bert = BertModel.from_pretrained('bert-base-multilingual-cased')
-        self.lstm = nn.LSTM(self.bert.config.hidden_size, 128, num_layers=2, bidirectional=True, batch_first=True)
+        self.bert = BertModel.from_pretrained("bert-base-multilingual-cased")
+        self.lstm = nn.LSTM(
+            self.bert.config.hidden_size,
+            128,
+            num_layers=2,
+            bidirectional=True,
+            batch_first=True,
+        )
         self.fc = nn.Linear(256, num_tags)
         self.loss_fn = nn.CrossEntropyLoss(ignore_index=label_pad_idx)
         self.label_pad_idx = label_pad_idx

@@ -37,9 +37,7 @@ languages = ["english", "arabic", "spanish", "russian", "turkish"]
 model_performance_results = {}
 
 for model in models:
-
     for language in languages:
-
         train_f1, eval_f1 = run_experiment(
             model,
             language,

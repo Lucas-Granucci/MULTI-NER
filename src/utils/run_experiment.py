@@ -10,7 +10,6 @@ from data.NERDataloader import create_dataloaders
 def run_experiment(
     Model, language, language_data, output_path, config, use_transfer_learning=False
 ):
-
     try:
         logger.info(f"Running experiment with {Model.__name__} on {language} data...")
 

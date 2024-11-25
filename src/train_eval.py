@@ -5,7 +5,6 @@ from utils.metrics import f1_score, prepare_labels
 
 
 def train_model(model, train_dataloader, test_dataloader, model_dir, config):
-
     device = config["model"]["device"]
     num_epochs = config["training"]["epoch_num"]
     f1_patience = config["training"]["f1_patience"]
@@ -19,7 +18,7 @@ def train_model(model, train_dataloader, test_dataloader, model_dir, config):
     with tqdm(total=num_epochs, desc="Training Progress", unit="epoch") as pbar:
         for epoch in range(num_epochs):
             # Training and evaluation
-            train_loss, train_f1 = train_epoch(model, train_dataloader, optimizer, device)
+            _, train_f1 = train_epoch(model, train_dataloader, optimizer, device)
             epoch_f1 = evaluate_epoch(model, test_dataloader, device)
 
             # Save the best version of the model
@@ -48,7 +47,6 @@ def train_model(model, train_dataloader, test_dataloader, model_dir, config):
 
 
 def evaluate_model(model, val_dataloader, config):
-
     device = device = config["model"]["device"]
     eval_f1 = evaluate_epoch(model, val_dataloader, device)
 
@@ -63,7 +61,6 @@ def train_epoch(model, dataloader, optimizer, device):
     zero_tensor = torch.tensor(0, device=device)
 
     for input_ids, labels, attention_mask in dataloader:
-
         # Replace -100 in labels with 0 (or any valid tag) temporarily for CRF computation
         labels = torch.where(labels == model.label_pad_idx, zero_tensor, labels)
 
@@ -99,7 +96,6 @@ def evaluate_epoch(model, dataloader, device):
 
     with torch.no_grad():
         for input_ids, labels, attention_mask in dataloader:
-
             # Replace -100 in labels with 0 (or any valid tag) temporarily for CRF computation
             labels = torch.where(labels == model.label_pad_idx, zero_tensor, labels)
 

@@ -6,15 +6,15 @@ from datasets import DatasetDict
 from datasets import load_dataset
 
 from datasets.utils.logging import disable_progress_bar
+
 disable_progress_bar()
 
-class WikiANN_Downloader:
 
+class WikiANN_Downloader:
     def __init__(self):
         self.dataset = None
 
     def load_data(self, langs: list, shuffle: bool = False) -> pd.DataFrame:
-
         if len(langs) == 1 and langs[0] == "":
             return "No Language Code"
 
@@ -40,8 +40,9 @@ class WikiANN_Downloader:
 
         return multilingual_df
 
-    def load_split_data(self, langs: list, train_ratio=0.8, val_ratio=0.1, shuffle: bool = False):
-
+    def load_split_data(
+        self, langs: list, train_ratio=0.8, val_ratio=0.1, shuffle: bool = False
+    ):
         multilingual_df = self.load_data(langs, shuffle)
 
         # Calculate the indices for splitting
@@ -57,7 +58,6 @@ class WikiANN_Downloader:
         return df_train, df_val, df_test
 
     def get_multilingual_dataset(self, langs: list) -> defaultdict:
-
         wikiann_dataset = defaultdict(DatasetDict)
 
         for lang in langs:

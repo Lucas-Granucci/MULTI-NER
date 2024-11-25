@@ -1,10 +1,11 @@
 import torch.nn as nn
 from transformers import BertModel
 
+
 class BERT(nn.Module):
     def __init__(self, num_tags, label_pad_idx=-100):
         super(BERT, self).__init__()
-        self.bert = BertModel.from_pretrained('bert-base-multilingual-cased')
+        self.bert = BertModel.from_pretrained("bert-base-multilingual-cased")
         self.fc = nn.Linear(self.bert.config.hidden_size, num_tags)
         self.loss_fn = nn.CrossEntropyLoss(ignore_index=label_pad_idx)
         self.label_pad_idx = label_pad_idx

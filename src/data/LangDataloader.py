@@ -5,13 +5,11 @@ from data.wikiann_downloader import WikiANN_Downloader
 
 
 class LanguageDataLoader:
-
     def __init__(self, config):
         self.path_to_lang_groups = config["languages"]["path_to_groups"]
         self.wikiann_downloader = WikiANN_Downloader()
 
     def load_language_groups(self) -> Dict[str, Any]:
-
         with open(self.path_to_lang_groups, "r") as file:
             language_groups = json.load(file)
 
@@ -22,7 +20,6 @@ class LanguageDataLoader:
         return language_data
 
     def _process_language_group(self, lang_dict: dict) -> dict:
-
         low_resource_langs = lang_dict["low_resource"]
         high_resource_langs = lang_dict["high_resource"]
 
