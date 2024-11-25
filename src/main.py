@@ -4,7 +4,6 @@ from models.BertBilstmCrf import BERTBiLSTMCRF
 
 from utils.logging import logger
 from utils.load_config import load_config
-from utils.run_experiment import run_experiment
 
 # Load configuration
 config = load_config()

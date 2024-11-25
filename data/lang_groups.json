@@ -11,12 +11,12 @@
         "low_resource": ["es"],
         "high_resource": [""]
     },
-    "japanese": {
-        "low_resource": ["ja"],
+    "russian": {
+        "low_resource": ["ru"],
         "high_resource": [""]
     },
-    "chinese": {
-        "low_resource": ["zh"],
+    "turkish": {
+        "low_resource": ["tr"],
         "high_resource": [""]
     }
 }

@@ -39,21 +39,20 @@ tokenizer:
 
 # Training parameters
 training:
-  epoch_num: 1
+  epoch_num: 20
   batch_size: 32
   learning_rate: 0.00005
-# ---------------------------- TEMPORARY PLACEHOLDERS ---------------------------- #
+  f1_patience: 5
 
 # Model settings
 model:
-  type: "transformer"  # e.g., transformer, BiLSTM-CRF
   name: "google-bert/bert-base-multilingual-cased"
   hidden_size: 768
   num_labels: 7  # Number of NER labels
-  hidden_dropout_prob: 0.2
-  lstm_dropout_prob: 0.1
   model_dir: "src/models/pretrained"
   device: "cuda"
+
+# ---------------------------- TEMPORARY PLACEHOLDERS ---------------------------- #
 
 # Pseudo-labeling configuration
 pseudo_labeling:

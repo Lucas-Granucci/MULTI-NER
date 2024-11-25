@@ -23,26 +23,37 @@ dataloader = LanguageDataLoader(config)
 language_data = dataloader.load_language_groups()
 
 # Define models
-models = [BERT, BERTBiLSTM, BERTBiLSTMCRF, XLMRoBERTa, XLMRoBERTaBiLSTM, XLMRoBERTaBiLSTMCRF]
-languages = ["english", "arabic", "spanish", "japanese", "chinese"]
+models = [
+    BERT,
+    BERTBiLSTM,
+    BERTBiLSTMCRF,
+    XLMRoBERTa,
+    XLMRoBERTaBiLSTM,
+    XLMRoBERTaBiLSTMCRF,
+]
+languages = ["english", "arabic", "spanish", "russian", "turkish"]
 
 # Run experiments
-logger.info(f"Models to test: {' '.join([model.__name__ for model in models])}")
-logger.info(f"Languages to test: {' '.join(languages)}")
-
 model_performance_results = {}
 
 for model in models:
 
     for language in languages:
 
-        train_f1, eval_f1 = run_experiment(model, language, language_data, 
-                                           f"src/models/pretrained/best_{language}.pth", 
-                                           config, use_transfer_learning=False)
-        
+        train_f1, eval_f1 = run_experiment(
+            model,
+            language,
+            language_data,
+            f"src/models/pretrained/best_{language}.pth",
+            config,
+            use_transfer_learning=False,
+        )
+
         # Initialize nested dictionaries
-        model_performance_results.setdefault(model.__name__, {}).setdefault(language, {})
-        
+        model_performance_results.setdefault(model.__name__, {}).setdefault(
+            language, {}
+        )
+
         model_performance_results[model.__name__][language]["train_f1"] = train_f1
         model_performance_results[model.__name__][language]["eval_f1"] = eval_f1
 
