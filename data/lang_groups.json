@@ -1,22 +1,26 @@
 {
-    "english": {
-        "low_resource": ["en"],
-        "high_resource": [""]
+    "germanic": {
+        "low_resource": "fy",
+        "high_resource": "en"
     },
-    "arabic": {
-        "low_resource": ["ar"],
-        "high_resource": [""]
+    "romance": {
+        "low_resource": "ast",
+        "high_resource": ""
     },
-    "spanish": {
-        "low_resource": ["es"],
-        "high_resource": [""]
+    "slavic": {
+        "low_resource": "mk",
+        "high_resource": ""
     },
-    "russian": {
-        "low_resource": ["ru"],
-        "high_resource": [""]
+    "south-asian-indic": {
+        "low_resource": "hi",
+        "high_resource": ""
     },
-    "turkish": {
-        "low_resource": ["tr"],
-        "high_resource": [""]
+    "turkic": {
+        "low_resource": "uz",
+        "high_resource": ""
+    },
+    "austronesian": {
+        "low_resource": "tl",
+        "high_resource": ""
     }
 }

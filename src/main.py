@@ -15,6 +15,7 @@ DEVICE = config["model"]["device"]
 logger.info("Downloading data...")
 dataloader = LanguageDataLoader(config)
 language_data = dataloader.load_language_groups()
+print(language_data)
 
 # Define model
 model = BERTBiLSTMCRF

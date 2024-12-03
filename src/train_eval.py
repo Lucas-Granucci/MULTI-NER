@@ -1,6 +1,7 @@
 import torch
 from tqdm import tqdm
 import torch.optim as optim
+import torch.optim.lr_scheduler as lr_scheduler
 from utils.metrics import f1_score, prepare_labels
 
 
@@ -11,6 +12,9 @@ def train_model(model, train_dataloader, test_dataloader, model_dir, config):
     early_stopping = f1_patience
 
     optimizer = optim.Adam(model.parameters(), lr=config["training"]["learning_rate"])
+    scheduler = lr_scheduler.LinearLR(
+        optimizer, start_factor=1.0, end_factor=0.3, total_iters=num_epochs
+    )
 
     best_f1_score = -float("inf")
     best_epoch = -1
@@ -38,6 +42,9 @@ def train_model(model, train_dataloader, test_dataloader, model_dir, config):
                 best_f1=f"{best_f1_score:.4f}",
             )
             pbar.update(1)
+
+            # Step scheduler
+            scheduler.step
 
             # Early stopping
             if early_stopping == 0:
@@ -71,6 +78,7 @@ def train_epoch(model, dataloader, optimizer, device):
         # Calculate loss and backward pass
         loss = model.loss(emissions, labels, attention_mask.bool())
         loss.backward()
+        torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
         optimizer.step()
 
         # Prepare and colllect masked predictions and labels

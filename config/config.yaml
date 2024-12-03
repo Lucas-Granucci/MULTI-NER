@@ -40,8 +40,8 @@ tokenizer:
 # Training parameters
 training:
   epoch_num: 20
-  batch_size: 32
-  learning_rate: 0.00005
+  batch_size: 16
+  learning_rate: 0.00004
   f1_patience: 5
 
 # Model settings

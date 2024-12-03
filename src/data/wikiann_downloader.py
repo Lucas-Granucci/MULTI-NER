@@ -1,8 +1,6 @@
-import numpy as np
 import pandas as pd
 
 from collections import defaultdict
-from datasets import DatasetDict
 from datasets import load_dataset
 
 from datasets.utils.logging import disable_progress_bar
@@ -14,54 +12,41 @@ class WikiANN_Downloader:
     def __init__(self):
         self.dataset = None
 
-    def load_data(self, langs: list, shuffle: bool = False) -> pd.DataFrame:
-        if len(langs) == 1 and langs[0] == "":
-            return "No Language Code"
+    def load_data(self, lang: str, shuffle: bool = False) -> pd.DataFrame:
+        lang_dataset = self.get_multilingual_dataset(lang)
 
-        wikiann_dataset = self.get_multilingual_dataset(langs)
-        lang_dataframes = []
+        lang_data = lang_dataset
 
-        for lang in langs:
-            lang_data = wikiann_dataset[lang]
+        train_df = pd.DataFrame(lang_data["train"])
+        val_df = pd.DataFrame(lang_data["validation"])
+        test_df = pd.DataFrame(lang_data["test"])
 
-            train_df = pd.DataFrame(lang_data["train"])
-            val_df = pd.DataFrame(lang_data["validation"])
-            test_df = pd.DataFrame(lang_data["test"])
-
-            complete_lang_df = pd.concat([train_df, val_df, test_df], ignore_index=True)
-            complete_lang_df["lang"] = lang
-
-            lang_dataframes.append(complete_lang_df)
-
-        multilingual_df = pd.concat(lang_dataframes)
+        complete_lang_df = pd.concat([train_df, val_df, test_df], ignore_index=True)
+        complete_lang_df["lang"] = lang
 
         if shuffle:
-            multilingual_df = multilingual_df.sample(frac=1)
+            complete_lang_df = complete_lang_df.sample(frac=1)
 
-        return multilingual_df
+        return complete_lang_df
 
     def load_split_data(
-        self, langs: list, train_ratio=0.8, val_ratio=0.1, shuffle: bool = False
+        self, lang: str, train_ratio=0.8, val_ratio=0.1, shuffle: bool = False
     ):
-        multilingual_df = self.load_data(langs, shuffle)
+        lang_df = self.load_data(lang, shuffle)
 
         # Calculate the indices for splitting
-        total_len = len(multilingual_df)
+        total_len = len(lang_df)
         train_end = int(train_ratio * total_len)
         val_end = train_end + int(val_ratio * total_len)
 
         # Perform the split
-        df_train = multilingual_df.iloc[:train_end]
-        df_val = multilingual_df.iloc[train_end:val_end]
-        df_test = multilingual_df.iloc[val_end:]
+        df_train = lang_df.iloc[:train_end]
+        df_val = lang_df.iloc[train_end:val_end]
+        df_test = lang_df.iloc[val_end:]
 
         return df_train, df_val, df_test
 
-    def get_multilingual_dataset(self, langs: list) -> defaultdict:
-        wikiann_dataset = defaultdict(DatasetDict)
+    def get_multilingual_dataset(self, lang: str) -> defaultdict:
+        lang_dataset = load_dataset("unimelb-nlp/wikiann", name=lang)
 
-        for lang in langs:
-            ds = load_dataset("unimelb-nlp/wikiann", name=lang)
-            wikiann_dataset[lang] = ds
-
-        return wikiann_dataset
+        return lang_dataset

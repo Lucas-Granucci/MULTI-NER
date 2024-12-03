@@ -20,15 +20,19 @@ class LanguageDataLoader:
         return language_data
 
     def _process_language_group(self, lang_dict: dict) -> dict:
-        low_resource_langs = lang_dict["low_resource"]
-        high_resource_langs = lang_dict["high_resource"]
+        low_resource_lang = lang_dict["low_resource"]
+        high_resource_lang = lang_dict["high_resource"]
 
         low_resource_train, low_resource_val, low_resource_test = (
-            self.wikiann_downloader.load_split_data(low_resource_langs, shuffle=True)
+            self.wikiann_downloader.load_split_data(low_resource_lang, shuffle=True)
         )
-        high_resource_data = self.wikiann_downloader.load_data(
-            high_resource_langs, shuffle=True
-        )
+
+        if high_resource_lang != "":
+            high_resource_data = self.wikiann_downloader.load_data(
+                high_resource_lang, shuffle=True
+            )
+        else:
+            high_resource_data = "none"
 
         return {
             "low_resource": {

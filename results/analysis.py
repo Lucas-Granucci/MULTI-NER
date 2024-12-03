@@ -11,18 +11,23 @@ models = []
 language_scores = defaultdict(list)
 
 for model, results in model_performance.items():
+    total_model_score = 0
     for language, scores in results.items():
         language_scores[language].append(round(scores["eval_f1"], 3))
+        total_model_score += round(scores["eval_f1"], 3)
+    print("Model: {}".format(model))
+    print("Avg. Score: {}".format(total_model_score / 6))
+    print()
     models.append(model)
 
 x = np.arange(len(models))
 fig, ax = plt.subplots(layout="constrained", figsize=(14, 8))
 
-width = 0.18
+width = 0.14
 multiplier = -2
 
 # Use a professional color palette
-colors = plt.cm.get_cmap("tab10", len(language_scores))
+colors = plt.cm.get_cmap("Blues", len(language_scores))
 
 for idx, (language, scores) in enumerate(language_scores.items()):
     offset = width * multiplier

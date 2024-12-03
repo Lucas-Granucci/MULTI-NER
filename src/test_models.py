@@ -31,7 +31,14 @@ models = [
     XLMRoBERTaBiLSTM,
     XLMRoBERTaBiLSTMCRF,
 ]
-languages = ["english", "arabic", "spanish", "russian", "turkish"]
+languages = [
+    "germanic",
+    "romance",
+    "slavic",
+    "south-asian-indic",
+    "turkic",
+    "austronesian",
+]  # "english", "arabic", "spanish", "russian", "turkish"
 
 # Run experiments
 model_performance_results = {}
