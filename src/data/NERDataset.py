@@ -73,7 +73,7 @@ class NERDataset(Dataset):
 
         batch_data = torch.tensor(batch_data, dtype=torch.long)
         batch_labels = torch.tensor(batch_labels, dtype=torch.long)
-        batch_attention_mask = (batch_labels != -100).long()
+        batch_attention_mask = (batch_data != self.word_pad_idx).long()
 
         batch_data = batch_data.to(self.device)
         batch_labels = batch_labels.to(self.device)

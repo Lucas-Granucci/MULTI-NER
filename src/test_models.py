@@ -24,8 +24,8 @@ language_data = dataloader.load_language_groups()
 
 # Define models
 models = [
-    BERT,
-    BERTBiLSTM,
+    #BERT,
+    #BERTBiLSTM,
     BERTBiLSTMCRF,
     XLMRoBERTa,
     XLMRoBERTaBiLSTM,

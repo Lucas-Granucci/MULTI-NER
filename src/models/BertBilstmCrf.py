@@ -1,3 +1,4 @@
+import torch
 import torch.nn as nn
 from transformers import BertModel
 from torchcrf import CRF
@@ -27,7 +28,10 @@ class BERTBiLSTMCRF(nn.Module):
         return emissions
 
     def loss(self, emissions, tags, mask):
-        return -self.crf(emissions, tags, mask=mask)
+
+        adjusted_tags = torch.where(tags == -100, torch.tensor(0, device=tags.device), tags)
+
+        return -self.crf(emissions, adjusted_tags, mask=mask)
 
     def decode(self, emissions, mask):
         return self.crf.decode(emissions, mask=mask)

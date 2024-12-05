@@ -42,6 +42,5 @@ def run_experiment(
         torch.cuda.empty_cache()
         torch.cuda.reset_peak_memory_stats()
         torch.cuda.synchronize()
-        torch.cuda.empty_cache()
 
     return best_train_f1, eval_f1

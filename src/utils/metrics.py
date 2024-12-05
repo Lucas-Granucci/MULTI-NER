@@ -10,7 +10,7 @@ def f1_score(masked_predictions, masked_labels, num_labels):
     return f1_score_tensor.cpu().numpy().item()
 
 
-def prepare_labels(emissions, labels, attention_mask):
+def prepare_labels(emissions, labels, attention_mask, label_pad_idx=-100):
     # Prepare outputs for F1-scoring
     predicted_labels = emissions.argmax(dim=-1)
 
@@ -19,7 +19,7 @@ def prepare_labels(emissions, labels, attention_mask):
     labels = torch.flatten(labels)
     attention_mask = torch.flatten(attention_mask)
 
-    mask = attention_mask == 1
+    mask = (attention_mask == 1) & (labels != label_pad_idx)
 
     masked_predictions = predicted_labels[mask]
     masked_labels = labels[mask]
