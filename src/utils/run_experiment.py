@@ -31,7 +31,7 @@ def run_experiment(
 
         # Load the best model from training
         model.load_state_dict(torch.load(output_path, weights_only=True))
-        eval_f1 = evaluate_model(model, val_dataloader, config)
+        eval_f1 = evaluate_model(model, val_dataloader)
         logger.info(f"Evaluation complete. Eval F1-Score: {eval_f1:.4f}")
 
     finally:

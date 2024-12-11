@@ -79,4 +79,11 @@ class NERDataset(Dataset):
         batch_labels = batch_labels.to(self.device)
         batch_attention_mask = batch_attention_mask.to(self.device)
 
-        return [batch_data, batch_labels, batch_attention_mask]
+        batch = {
+            "input_ids": batch_data,
+            "labels": batch_labels,
+            "attention_mask": batch_attention_mask,
+            "sentences": sentences,
+        }
+
+        return batch

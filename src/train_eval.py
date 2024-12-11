@@ -6,7 +6,6 @@ from utils.metrics import f1_score, prepare_labels
 
 
 def train_model(model, train_dataloader, test_dataloader, model_dir, config):
-    device = config["model"]["device"]
     num_epochs = config["training"]["epoch_num"]
     f1_patience = config["training"]["f1_patience"]
     early_stopping = f1_patience
@@ -22,8 +21,8 @@ def train_model(model, train_dataloader, test_dataloader, model_dir, config):
     with tqdm(total=num_epochs, desc="Training Progress", unit="epoch") as pbar:
         for epoch in range(num_epochs):
             # Training and evaluation
-            _, train_f1 = train_epoch(model, train_dataloader, optimizer, device)
-            epoch_f1 = evaluate_epoch(model, test_dataloader, device)
+            _, train_f1 = train_epoch(model, train_dataloader, optimizer)
+            epoch_f1 = evaluate_epoch(model, test_dataloader)
 
             # Save the best version of the model
             if epoch_f1 > best_f1_score:
@@ -53,35 +52,35 @@ def train_model(model, train_dataloader, test_dataloader, model_dir, config):
     return best_f1_score, best_epoch
 
 
-def evaluate_model(model, val_dataloader, config):
-    device = device = config["model"]["device"]
-    eval_f1 = evaluate_epoch(model, val_dataloader, device)
-
+def evaluate_model(model, val_dataloader):
+    eval_f1 = evaluate_epoch(model, val_dataloader)
     return eval_f1
 
 
-def train_epoch(model, dataloader, optimizer, device):
+def train_epoch(model, dataloader, optimizer):
     model.train()
     total_loss = 0.0
     total_f1 = 0.0
 
-    for input_ids, labels, attention_mask in dataloader:
-        # Esnure mask ignores padding labels
-        #adjusted_mask = attention_mask & (labels != model.label_pad_idx)
+    for batch in dataloader:
+        input_ids = batch["input_ids"]
+        labels = batch["labels"]
+        attention_mask = batch["attention_mask"]
 
         # Forward pass
         optimizer.zero_grad(set_to_none=True)
         emissions = model(input_ids, attention_mask)
 
         # Calculate loss and backward pass
-        loss = model.loss(emissions, labels, attention_mask.bool())
+        loss = model.loss(emissions, labels)
         loss.backward()
         torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
         optimizer.step()
 
         # Prepare and colllect masked predictions and labels
+        decoded_emissions = model.decode(emissions)
         masked_predictions, masked_labels = prepare_labels(
-            emissions, labels, attention_mask
+            decoded_emissions, labels, attention_mask
         )
         batch_f1 = f1_score(masked_predictions, masked_labels, model.num_tags)
         total_f1 += batch_f1
@@ -95,26 +94,23 @@ def train_epoch(model, dataloader, optimizer, device):
     return avg_loss, avg_f1
 
 
-def evaluate_epoch(model, dataloader, device):
+def evaluate_epoch(model, dataloader):
     model.eval()
     total_f1 = 0.0
-    
-    dummy_label = model.num_tags
-    dummy_tensor = torch.tensor(dummy_label, device=device)
 
     with torch.no_grad():
-        for input_ids, labels, attention_mask in dataloader:
-            # Replace -100 in labels with 0 (or any valid tag) temporarily for CRF computation
-            # labels = torch.where(labels == model.label_pad_idx, dummy_tensor, labels)
-
-            #adjusted_mask = attention_mask & (labels != -100)
+        for batch in dataloader:
+            input_ids = batch["input_ids"]
+            labels = batch["labels"]
+            attention_mask = batch["attention_mask"]
 
             # Forward pass
             emissions = model(input_ids, attention_mask)
 
             # Compute batch F1
+            decoded_emissions = model.decode(emissions)
             masked_predictions, masked_labels = prepare_labels(
-                emissions, labels, attention_mask
+                decoded_emissions, labels, attention_mask
             )
             batch_f1 = f1_score(masked_predictions, masked_labels, model.num_tags)
             total_f1 += batch_f1
@@ -125,9 +121,16 @@ def evaluate_epoch(model, dataloader, device):
 
 
 def predict_test(model, dataloader):
-    for input_ids, _, attention_mask in dataloader:
-        print(input_ids.shape)
+    for batch in dataloader:
+
+        input_ids = batch["input_ids"]
+        labels = batch["labels"]
+        attention_mask = batch["attention_mask"]
+        sentences = batch["sentences"]
+
         # Forward pass
         emissions = model(input_ids, attention_mask)
-        print(emissions.shape)
-        return emissions
+        decoded_emissions = model.decode(emissions)
+
+        sentence_lengths = [len(sentence[1]) for sentence in sentences]
+        return decoded_emissions, labels, sentence_lengths

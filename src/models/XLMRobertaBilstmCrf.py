@@ -1,3 +1,4 @@
+import torch
 import torch.nn as nn
 from transformers import XLMRobertaModel
 from torchcrf import CRF
@@ -28,8 +29,10 @@ class XLMRoBERTaBiLSTMCRF(nn.Module):
         emissions = self.fc(lstm_output)
         return emissions
 
-    def loss(self, emissions, tags, mask):
-        return -self.crf(emissions, tags, mask=mask)
+    def loss(self, emissions, tags):
+        adjusted_tags = torch.where(tags == -100, torch.tensor(0, device=tags.device), tags)
+        label_mask = (tags != -100).bool()
+        return -self.crf(emissions, adjusted_tags, mask=label_mask)
 
-    def decode(self, emissions, mask):
-        return self.crf.decode(emissions, mask=mask)
+    def decode(self, emissions):
+        return self.crf.decode(emissions)

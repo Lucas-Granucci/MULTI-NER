@@ -27,11 +27,10 @@ class XLMRoBERTaBiLSTM(nn.Module):
         emissions = self.fc(lstm_output)
         return emissions
 
-    def loss(self, emissions, tags, mask):
-        active_loss = mask.view(-1) == 1
-        active_emissions = emissions.view(-1, self.num_tags)[active_loss]
-        active_tags = tags.view(-1)[active_loss]
-        return self.loss_fn(active_emissions, active_tags)
+    def loss(self, emissions, tags):
+        emissions = emissions.view(-1, self.num_tags)
+        tags = tags.view(-1)
+        return self.loss_fn(emissions, tags)
 
-    def decode(self, emissions, mask):
+    def decode(self, emissions):
         return emissions.argmax(dim=-1)
