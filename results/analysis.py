@@ -47,7 +47,7 @@ ax.set_ylabel("F1-Score", fontsize=12, weight="bold")
 ax.set_xlabel("Models", fontsize=12, weight="bold")
 ax.set_title("Model Performance Across Languages", fontsize=16, weight="bold", pad=20)
 ax.set_xticks(x + width / 2, labels=models, fontsize=10, rotation=30, ha="right")
-ax.set_ylim(0, 1.05)
+ax.set_ylim(0, 1.1)
 
 # Add gridlines for better readability
 ax.grid(axis="y", linestyle="--", alpha=0.7)

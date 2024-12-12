@@ -12,7 +12,9 @@ def f1_score(masked_predictions, masked_labels, num_labels):
 
 def prepare_labels(decoded_emissions, labels, attention_mask, label_pad_idx=-100):
     # Flatten for direct comparison
-    predicted_labels = torch.cat([torch.tensor(emission, device=labels.device) for emission in decoded_emissions])
+    predicted_labels = torch.cat(
+        [torch.tensor(emission, device=labels.device) for emission in decoded_emissions]
+    )
     labels = labels.flatten()
     attention_mask = attention_mask.flatten()
 

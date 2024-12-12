@@ -28,7 +28,9 @@ class BERTBiLSTMCRF(nn.Module):
         return emissions
 
     def loss(self, emissions, tags):
-        adjusted_tags = torch.where(tags == -100, torch.tensor(0, device=tags.device), tags)
+        adjusted_tags = torch.where(
+            tags == -100, torch.tensor(0, device=tags.device), tags
+        )
         label_mask = (tags != -100).bool()
         return -self.crf(emissions, adjusted_tags, mask=label_mask)
 

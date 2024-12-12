@@ -2,6 +2,7 @@ import torch
 from tqdm import tqdm
 import torch.optim as optim
 import torch.optim.lr_scheduler as lr_scheduler
+from utils.optimizer import setup_optimizer
 from utils.metrics import f1_score, prepare_labels
 
 
@@ -10,7 +11,8 @@ def train_model(model, train_dataloader, test_dataloader, model_dir, config):
     f1_patience = config["training"]["f1_patience"]
     early_stopping = f1_patience
 
-    optimizer = optim.Adam(model.parameters(), lr=config["training"]["learning_rate"])
+    optimizer = setup_optimizer(model, config)
+
     scheduler = lr_scheduler.LinearLR(
         optimizer, start_factor=1.0, end_factor=0.3, total_iters=num_epochs
     )
@@ -122,7 +124,6 @@ def evaluate_epoch(model, dataloader):
 
 def predict_test(model, dataloader):
     for batch in dataloader:
-
         input_ids = batch["input_ids"]
         labels = batch["labels"]
         attention_mask = batch["attention_mask"]

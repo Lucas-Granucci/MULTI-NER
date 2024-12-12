@@ -28,6 +28,8 @@ class WikiANN_Downloader:
         return train_df, val_df, test_df
 
     def get_multilingual_dataset(self, lang: str) -> defaultdict:
-        lang_dataset = load_dataset("unimelb-nlp/wikiann", name=lang, download_mode="reuse_dataset_if_exists")
+        lang_dataset = load_dataset(
+            "unimelb-nlp/wikiann", name=lang, download_mode="reuse_dataset_if_exists"
+        )
 
         return lang_dataset
