@@ -28,11 +28,13 @@ class LanguageDataLoader:
         )
 
         if high_resource_lang != "":
-            high_resource_data, _, _ = self.wikiann_downloader.load_data(
-                high_resource_lang
+            high_resource_train, high_resource_val, high_resource_test = (
+                self.wikiann_downloader.load_data(high_resource_lang)
             )
         else:
-            high_resource_data = "none"
+            high_resource_train = "none"
+            high_resource_val = "none"
+            high_resource_test = "none"
 
         return {
             "low_resource": {
@@ -40,5 +42,9 @@ class LanguageDataLoader:
                 "val": low_resource_val,
                 "test": low_resource_test,
             },
-            "high_resource": {"train": high_resource_data},
+            "high_resource": {
+                "train": high_resource_train,
+                "val": high_resource_val,
+                "test": high_resource_test,
+            },
         }
