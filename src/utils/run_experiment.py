@@ -16,11 +16,12 @@ def run_experiment(
         NUM_LABELS = config["model"]["num_labels"]
         DEVICE = config["model"]["device"]
 
-        train_dataloader, test_dataloader, val_dataloader = create_dataloaders(
-            language_data[language], config, use_transfer_learning
-        )
-
         model = Model(NUM_LABELS).to(DEVICE)
+        tokenizer_type = model.get_model_type()
+
+        train_dataloader, test_dataloader, val_dataloader = create_dataloaders(
+            language_data[language], tokenizer_type, config, use_transfer_learning
+        )
 
         best_train_f1, best_epoch = train_model(
             model, train_dataloader, test_dataloader, output_path, config

@@ -26,3 +26,6 @@ class XLMRoBERTa(nn.Module):
 
     def decode(self, emissions):
         return emissions.argmax(dim=-1)
+
+    def get_model_type(self):
+        return "roberta"

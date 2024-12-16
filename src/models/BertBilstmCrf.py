@@ -36,3 +36,6 @@ class BERTBiLSTMCRF(nn.Module):
 
     def decode(self, emissions):
         return self.crf.decode(emissions)
+
+    def get_model_type(self):
+        return "bert"

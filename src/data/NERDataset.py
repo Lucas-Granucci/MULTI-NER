@@ -2,20 +2,34 @@ import torch
 import numpy as np
 from torch.utils.data import Dataset
 from transformers import BertTokenizerFast
+from transformers import XLMRobertaTokenizerFast
 
 
 class NERDataset(Dataset):
-    def __init__(self, df, config, word_pad_idx=0, label_pad_idx=-100):
-        self.tokenizer = BertTokenizerFast.from_pretrained(
-            config["tokenizer"]["bert_model"],
-            do_lower_case=True,
-            truncation=True,
-            max_length=256,
-        )
+    def __init__(self, df, tokenizer_type, config, word_pad_idx=0, label_pad_idx=-100):
+        self.tokenizer = self.setup_tokenizer(tokenizer_type, config)
         self.dataset = self.preprocess(df)
         self.word_pad_idx = word_pad_idx
         self.label_pad_idx = label_pad_idx
         self.device = config["model"]["device"]
+
+    def setup_tokenizer(self, tokenizer_type, config):
+        if tokenizer_type == "bert":
+            tokenizer = BertTokenizerFast.from_pretrained(
+                config["tokenizer"]["bert_model"],
+                do_lower_case=True,
+                truncation=True,
+                max_length=256,
+            )
+        elif tokenizer_type == "roberta":
+            tokenizer = XLMRobertaTokenizerFast.from_pretrained(
+                config["tokenizer"]["roberta_model"],
+                do_lower_case=True,
+                truncation=True,
+                max_length=256,
+            )
+
+        return tokenizer
 
     def preprocess(self, df):
         data = []

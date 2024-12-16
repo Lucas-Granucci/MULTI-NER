@@ -36,11 +36,12 @@ data:
 # Tokenizer settings
 tokenizer:
   bert_model: "google-bert/bert-base-multilingual-cased"
+  roberta_model: "xlm-roberta-base"
 
 # Training parameters
 training:
-  epoch_num: 30
-  batch_size: 16
+  epoch_num: 35
+  batch_size: 32
   bert_learning_rate: 0.00003
   lstm_learning_rate: 0.001
   crf_learning_rate: 0.001

@@ -1,26 +1,26 @@
 {
     "germanic": {
-        "low_resource": "fo",
+        "low_resource": "fy",
         "high_resource": "en"
     },
     "romance": {
-        "low_resource": "co",
+        "low_resource": "ast",
         "high_resource": ""
     },
     "slavic": {
-        "low_resource": "hsb",
+        "low_resource": "mk",
         "high_resource": ""
     },
     "south-asian-indic": {
-        "low_resource": "bh",
+        "low_resource": "hi",
         "high_resource": ""
     },
     "turkic": {
-        "low_resource": "cv",
+        "low_resource": "uz",
         "high_resource": ""
     },
     "austronesian": {
-        "low_resource": "mg",
+        "low_resource": "tl",
         "high_resource": ""
     }
 }

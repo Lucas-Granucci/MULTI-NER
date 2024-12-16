@@ -16,19 +16,22 @@ class DataCreator:
         tokens_list = dataframe["tokens"].tolist()
         sentences_list = [" ".join(tokens) for tokens in tokens_list]
 
-        calls = 0
-        start_time = time.time()
+        max_calls_per_minute = 10
+        call_timestamps = []
+        buffer = 2
 
         for sentence in tqdm(sentences_list):
-            if calls >= 10:
-                elapsed_time = time.time() - start_time
-                if elapsed_time < 61:
-                    time.sleep(61 - elapsed_time)
-                    calls = 0
-                    start_time = time.time()
+            # Remove timestamps older than 1 minute
+            current_time = time.time()
+            call_timestamps = [ts for ts in call_timestamps if current_time - ts < 60]
+
+            if len(call_timestamps) >= max_calls_per_minute:
+                sleep_time = 60 + buffer - (current_time - call_timestamps[0])
+                if sleep_time > 0:
+                    time.sleep(sleep_time)
 
             translation = self.translate_sentence(sentence, target_language)
-            calls += 1
+            call_timestamps.append(time.time())
 
             with open(data_dir, "a", encoding="utf-8") as f:
                 f.write("[START]" + translation + "[END]" + "\n")

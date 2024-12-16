@@ -27,7 +27,7 @@ width = 0.14
 multiplier = -2
 
 # Use a professional color palette
-colors = plt.cm.get_cmap("Blues", len(language_scores))
+colors = plt.get_cmap("Blues", len(language_scores))
 
 for idx, (language, scores) in enumerate(language_scores.items()):
     offset = width * multiplier
@@ -62,5 +62,4 @@ ax.legend(
     frameon=False,
 )
 
-plt.tight_layout()
 plt.show()

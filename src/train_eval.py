@@ -1,9 +1,8 @@
 import torch
 from tqdm import tqdm
-import torch.optim as optim
 import torch.optim.lr_scheduler as lr_scheduler
 from utils.optimizer import setup_optimizer
-from utils.metrics import f1_score, prepare_labels
+from utils.metrics import f1_score, prepare_labels, print_classification_report
 
 
 def train_model(model, train_dataloader, test_dataloader, model_dir, config):
@@ -24,7 +23,7 @@ def train_model(model, train_dataloader, test_dataloader, model_dir, config):
         for epoch in range(num_epochs):
             # Training and evaluation
             _, train_f1 = train_epoch(model, train_dataloader, optimizer)
-            epoch_f1 = evaluate_epoch(model, test_dataloader)
+            epoch_f1, _, _ = evaluate_epoch(model, test_dataloader)
 
             # Save the best version of the model
             if epoch_f1 > best_f1_score:
@@ -55,7 +54,10 @@ def train_model(model, train_dataloader, test_dataloader, model_dir, config):
 
 
 def evaluate_model(model, val_dataloader):
-    eval_f1 = evaluate_epoch(model, val_dataloader)
+    eval_f1, all_preds, all_labels = evaluate_epoch(model, val_dataloader)
+
+    # print_classification_report(all_preds, all_labels)
+
     return eval_f1
 
 
@@ -100,6 +102,9 @@ def evaluate_epoch(model, dataloader):
     model.eval()
     total_f1 = 0.0
 
+    all_predictions = []
+    all_labels = []
+
     with torch.no_grad():
         for batch in dataloader:
             input_ids = batch["input_ids"]
@@ -117,9 +122,13 @@ def evaluate_epoch(model, dataloader):
             batch_f1 = f1_score(masked_predictions, masked_labels, model.num_tags)
             total_f1 += batch_f1
 
+            for pred, label in zip(masked_predictions, masked_labels):
+                all_predictions.append(pred)
+                all_labels.append(label)
+
     avg_f1 = total_f1 / len(dataloader)
 
-    return avg_f1
+    return avg_f1, all_predictions, all_labels
 
 
 def predict_test(model, dataloader):
