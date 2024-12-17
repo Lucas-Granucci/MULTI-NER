@@ -31,20 +31,12 @@ models = [
     XLMRoBERTaBiLSTM,
     XLMRoBERTaBiLSTMCRF,
 ]
-languages = [
-    "germanic",
-    "romance",
-    "slavic",
-    "south-asian-indic",
-    "turkic",
-    "austronesian",
-]  # "english", "arabic", "spanish", "russian", "turkish"
 
 # Run experiments
 model_performance_results = {}
 
 for model in models:
-    for language in languages:
+    for language in language_data:
         train_f1, eval_f1 = run_experiment(
             model,
             language,

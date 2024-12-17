@@ -1,26 +1,38 @@
 {
     "germanic": {
-        "low_resource": "fo",
-        "high_resource": "en"
+        "low_resource_code": "fo",
+        "low_resource_name": "Faroese",
+        "high_resource_code": "en",
+        "high_resource_name": "English"
     },
     "romance": {
-        "low_resource": "co",
-        "high_resource": ""
+        "low_resource_code": "co",
+        "low_resource_name": "Corsican",
+        "high_resource_code": "",
+        "high_resource_name": ""
     },
     "slavic": {
-        "low_resource": "hsb",
-        "high_resource": ""
+        "low_resource_code": "hsb",
+        "low_resource_name": "Upper Sorbian",
+        "high_resource_code": "",
+        "high_resource_name": ""
     },
     "south-asian-indic": {
-        "low_resource": "bh",
-        "high_resource": ""
+        "low_resource_code": "bh",
+        "low_resource_name": "Bhojpuri",
+        "high_resource_code": "",
+        "high_resource_name": ""
     },
     "turkic": {
-        "low_resource": "cv",
-        "high_resource": ""
+        "low_resource_code": "cv",
+        "low_resource_name": "Chuvash",
+        "high_resource_code": "",
+        "high_resource_name": ""
     },
     "austronesian": {
-        "low_resource": "mg",
-        "high_resource": ""
+        "low_resource_code": "mg",
+        "low_resource_name": "Malagasy",
+        "high_resource_code": "",
+        "high_resource_name": ""
     }
 }
