@@ -40,12 +40,12 @@ tokenizer:
 
 # Training parameters
 training:
-  epoch_num: 35
-  batch_size: 32
-  bert_learning_rate: 0.00002
-  lstm_learning_rate: 0.0008
-  crf_learning_rate: 0.0008
-  f1_patience: 8
+  epoch_num: 65
+  batch_size: 24
+  bert_learning_rate: 0.00003
+  lstm_learning_rate: 0.0006
+  crf_learning_rate: 0.0001
+  f1_patience: 15
 
 # Model settings
 model:

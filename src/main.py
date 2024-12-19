@@ -1,15 +1,11 @@
-import torch
+import json
 from data.LangDataloader import LanguageDataLoader
-
-from data.NERDataloader import create_dataloaders
-from models.XLMRobertaBilstmCrf import XLMRoBERTaBiLSTMCRF
-from models.Bert import BERT
 from models.BertBilstmCrf import BERTBiLSTMCRF
 
 from utils.logging import logger
 from utils.load_config import load_config
+from utils.run_experiment import run_experiment
 
-from train_eval import predict_test
 
 # Load configuration
 config = load_config()
@@ -26,29 +22,26 @@ language_data = dataloader.load_language_groups()
 NUM_LABELS = config["model"]["num_labels"]
 DEVICE = config["model"]["device"]
 
-model = BERT(NUM_LABELS).to(DEVICE)
-model.load_state_dict(
-    torch.load("src/models/pretrained/best_germanic.pth", weights_only=True)
-)
+model = BERTBiLSTMCRF(NUM_LABELS).to(DEVICE)
 
-train_dataloader, test_dataloader, val_dataloader = create_dataloaders(
-    language_data["germanic"], config, use_transfer_learning=False
-)
+# Train and evaluate model
+model_performance_results = {}
+for language in language_data:
+    train_f1, eval_f1 = run_experiment(
+        model,
+        language,
+        language_data,
+        f"src/models/pretrained/bertbilstmcrf_{language}.pth",
+        config,
+        use_transfer_learning=False,
+    )
 
-predictions, labels, sentence_lengths = predict_test(model, train_dataloader)
+    # Initialize nested dictionaries
+    model_performance_results.setdefault(model.__name__, {}).setdefault(language, {})
 
-id2label = config["data"]["id2label"]
-decoded_predictions = [
-    [id2label[idx.item()] for idx in sequence] for sequence in predictions
-]
+    model_performance_results[model.__name__][language]["train_f1"] = train_f1
+    model_performance_results[model.__name__][language]["eval_f1"] = eval_f1
 
-decoded_labels = [
-    [id2label[idx.item()] for idx in sequence if idx != -100] for sequence in labels
-]
-
-for prediction, label, sentence_length in zip(
-    decoded_predictions, decoded_labels, sentence_lengths
-):
-    print("PREDICTION: ", prediction[:sentence_length])
-    print("LABEL:      ", label)
-    print()
+# Save model performance results to json
+with open("results/baseline/model_performance.json", "w") as outfile:
+    json.dump(model_performance_results, outfile)

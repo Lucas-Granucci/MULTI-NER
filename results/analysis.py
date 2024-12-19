@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from collections import defaultdict
 
 # Load the data
-with open("results/model_performance.json", "r") as file:
+with open("results/test_models/model_performance.json", "r") as file:
     model_performance = json.load(file)
 
 models = []

@@ -26,7 +26,6 @@ def create_dataloaders(
     train_dataloader = DataLoader(
         train_nerdataset,
         batch_size=config["training"]["batch_size"],
-        shuffle=True,
         collate_fn=train_nerdataset.collate_fn,
     )
 
@@ -34,7 +33,6 @@ def create_dataloaders(
     test_dataloader = DataLoader(
         test_nerdataset,
         batch_size=config["training"]["batch_size"],
-        shuffle=True,
         collate_fn=test_nerdataset.collate_fn,
     )
 
@@ -42,7 +40,6 @@ def create_dataloaders(
     val_dataloader = DataLoader(
         val_nerdataset,
         batch_size=config["training"]["batch_size"],
-        shuffle=True,
         collate_fn=val_nerdataset.collate_fn,
     )
 

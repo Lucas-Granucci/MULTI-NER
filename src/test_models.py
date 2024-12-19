@@ -11,8 +11,12 @@ from models.XLMRobertaBilstm import XLMRoBERTaBiLSTM
 from models.XLMRobertaBilstmCrf import XLMRoBERTaBiLSTMCRF
 
 from utils.logging import logger
+from utils.set_seed import set_seed
 from utils.load_config import load_config
 from utils.run_experiment import run_experiment
+
+# Set seed
+set_seed(42)
 
 # Load configuration
 config = load_config()
@@ -55,5 +59,5 @@ for model in models:
         model_performance_results[model.__name__][language]["eval_f1"] = eval_f1
 
 # Save model performance results to json
-with open("results/model_performance.json", "w") as outfile:
+with open("results/test_models/model_performance.json", "w") as outfile:
     json.dump(model_performance_results, outfile)
