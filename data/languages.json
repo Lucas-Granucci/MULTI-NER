@@ -1,0 +1,44 @@
+[
+    {
+        "family": "germanic",
+        "low_resource_code": "fo",
+        "low_resource_name": "Faroese",
+        "high_resource_code": "en",
+        "high_resource_name": "English"
+    },
+    {
+        "family": "romance",
+        "low_resource_code": "co",
+        "low_resource_name": "Corsican",
+        "high_resource_code": "",
+        "high_resource_name": ""
+    },
+    {
+        "family": "slavic",
+        "low_resource_code": "hsb",
+        "low_resource_name": "Upper Sorbian",
+        "high_resource_code": "",
+        "high_resource_name": ""
+    },
+    {
+        "family": "south-asian-indic",
+        "low_resource_code": "bh",
+        "low_resource_name": "Bhojpuri",
+        "high_resource_code": "",
+        "high_resource_name": ""
+    },
+    {
+        "family": "turkic",
+        "low_resource_code": "cv",
+        "low_resource_name": "Chuvash",
+        "high_resource_code": "",
+        "high_resource_name": ""
+    },
+    {
+        "family": "austronesian",
+        "low_resource_code": "mg",
+        "low_resource_name": "Malagasy",
+        "high_resource_code": "",
+        "high_resource_name": ""
+    }
+]

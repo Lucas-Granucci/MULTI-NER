@@ -1,0 +1,301 @@
+,tokens,ner_tags,langs,spans
+0,"['Šwedski', 'sydrik', '(', ""''Galium"", 'suecicum', ""''"", ')']","[5, 6, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Šwedski sydrik']
+1,"['WEITERLEITUNG', 'Křesćansko-demokratiska', 'unija', 'Němskeje']","[0, 3, 4, 4]","['hsb', 'hsb', 'hsb', 'hsb']",['ORG: Křesćansko-demokratiska unija Němskeje']
+2,"['Richard', 'von', 'Weizsäcker', '(', '1920–2015', ')']","[1, 2, 2, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: Richard von Weizsäcker']
+3,"['Lermontow', ',', 'Michail', 'Jurjewič']","[1, 2, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']","['PER: Lermontow , Michail Jurjewič']"
+4,"['WEITERLEITUNG', 'Warlam', 'Tichonowič', 'Šalamow']","[0, 1, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']",['PER: Warlam Tichonowič Šalamow']
+5,"[""'"", ""''"", '-', 'Carl', 'von', 'Linné', '(', '1707-1778', ')']","[0, 0, 0, 1, 2, 2, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: Carl von Linné']
+6,"['Pjelsćojta', 'aronija', '(', ""''Aronia"", 'arbutifolia', ""''"", '(', 'L.', ')', 'Pers.', ',', 'Syn', '.']","[3, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: Pjelsćojta aronija']
+7,"['Leži', 'štyri', 'kilometry', 'wot', 'Moskowskeje', 'měšćanskeje', 'hranicy', '.']","[0, 0, 0, 0, 5, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Moskowskeje']
+8,"[""'"", ""''"", 'Čuchloma', ""''"", ""'"", '(', ')', 'je', 'městačko', 'w', 'Ruskej', 'federaciji', '.']","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 6, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Ruskej federaciji']
+9,"['TT', 'Trinidad', 'a', 'Tobago']","[0, 3, 4, 4]","['hsb', 'hsb', 'hsb', 'hsb']",['ORG: Trinidad a Tobago']
+10,"['WEITERLEITUNG', 'Zwjazkowa', 'awtodróha', '4']","[0, 3, 4, 4]","['hsb', 'hsb', 'hsb', 'hsb']",['ORG: Zwjazkowa awtodróha 4']
+11,"['Křesćanski', 'zwjazk', 'młodych', 'mužow']","[3, 4, 4, 4]","['hsb', 'hsb', 'hsb', 'hsb']",['ORG: Křesćanski zwjazk młodych mužow']
+12,"['bjezfrakcijny', '(', 'prjedy', 'Lěwica', ')']","[0, 0, 0, 3, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: Lěwica']
+13,"['WEITERLEITUNG', 'Zinaida', 'Nikolajewna', 'Gippius']","[0, 1, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']",['PER: Zinaida Nikolajewna Gippius']
+14,"['Němska', 'narodna', 'biblioteka']","[3, 4, 4]","['hsb', 'hsb', 'hsb']",['ORG: Němska narodna biblioteka']
+15,"['Jakub', 'Bart-Ćišinski', '(', '1856–1909', ')']","[1, 2, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: Jakub Bart-Ćišinski']
+16,"['Sawany', 'namakamy', 'pak', 'tež', 'w', 'Indiskej', ',', 'Južnej', 'Americe', 'a', 'Awstralskej', '.']","[0, 0, 0, 0, 0, 5, 0, 5, 6, 0, 5, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['LOC: Indiskej', 'LOC: Južnej Americe', 'LOC: Awstralskej']"
+17,"['Jan', 'Ignacy', 'Niecisław', 'Baudouin', 'de', 'Courtenay']","[1, 2, 2, 2, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: Jan Ignacy Niecisław Baudouin de Courtenay']
+18,"['Leži', 'dwanaće', 'kilometrow', 'sewjerowuchodnje', 'Kamjenicy', 'při', 'Sapawje', 'a', 'zwjazkowej', 'awtodróze', '4', '.']","[0, 0, 0, 0, 5, 0, 5, 0, 3, 4, 4, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['LOC: Kamjenicy', 'LOC: Sapawje', 'ORG: zwjazkowej awtodróze 4']"
+19,"['WEITERLEITUNG', 'Ludowa', 'republika', 'Luhansk']","[0, 3, 4, 4]","['hsb', 'hsb', 'hsb', 'hsb']",['ORG: Ludowa republika Luhansk']
+20,"['Tež', 'Tachantska', 'cyrkej', 'je', 'hódna', 'wobhladanja', '.']","[0, 3, 4, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: Tachantska cyrkej']
+21,"['Alexandra', 'Maria', 'Lara']","[1, 2, 2]","['hsb', 'hsb', 'hsb']",['PER: Alexandra Maria Lara']
+22,"['Rostlina', 'je', 'w', 'Europje', 'rozšěrjena', '.']","[0, 0, 0, 5, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Europje']
+23,"['Nimo', 'toho', 'přełoži', 'tež', 'někotre', 'bajki', 'Lewa', 'Tolstoja', '.']","[0, 0, 0, 0, 0, 0, 1, 2, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: Lewa Tolstoja']
+24,"['Prjedy', 'słušeše', 'do', 'swójby', 'jěrowcowych', 'rostlinow', '(', ""''Hippocastanaceae"", ""''"", ')', '.']","[0, 0, 0, 0, 5, 6, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: jěrowcowych rostlinow']
+25,"[""'"", ""''"", 'Ruzajewka', ""''"", ""'"", '(', ',', ',', ')', 'je', 'město', 'w', 'Ruskej', 'federaciji', '.']","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 6, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Ruskej federaciji']
+26,"['Mina', 'Witkojc', '(', '1893–1975', ')']","[1, 2, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: Mina Witkojc']
+27,"['Brody', '(', ""''Brody"", ""''"", ';', '3.482', 'wob', '.']","[5, 0, 0, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Brody']
+28,"['Ludwik', 'Lejzer', 'Zamenhof', '(', '*1859-†1917', ')']","[1, 2, 2, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: Ludwik Lejzer Zamenhof']
+29,"['Zwjazkowa', 'awtodróha', '4', 'Najězd', ""''Porchow"", ""''""]","[3, 4, 4, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: Zwjazkowa awtodróha 4']
+30,"['WEITERLEITUNG', 'Swobodna', 'demokratiska', 'strona']","[0, 3, 4, 4]","['hsb', 'hsb', 'hsb', 'hsb']",['ORG: Swobodna demokratiska strona']
+31,"['WEITERLEITUNG', 'Tachantska', 'cyrkej', 'swj.', 'Pětra']","[0, 3, 4, 4, 4]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: Tachantska cyrkej swj. Pětra']
+32,"['Słuša', 'ke', 'gmejnje', 'Hodźij', 'a', 'leži', '204', 'm', 'nad', 'mórskej', 'hładźinu', '.']","[0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Hodźij']
+33,"['Josip', 'Broz', 'Tito']","[1, 2, 2]","['hsb', 'hsb', 'hsb']",['PER: Josip Broz Tito']
+34,"['Wyše', 'toho', 'přinošowaše', 'k', 'Smolerjowej', 'zběrce', 'delnjoserbskich', 'ludowych', 'spěwow', '.']","[0, 0, 0, 0, 1, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: Smolerjowej']
+35,"['Leži', 'při', 'rěce', 'Nica', 'we', 'wuchodnym', 'předkraju', 'Uralskich', 'horin', 'w', 'Swjerdlowskej', 'oblasći', 'něhdźe', '100', 'kilometrow', 'juhowuchodnje', 'Jekaterinburga', '.']","[0, 0, 0, 0, 0, 0, 0, 5, 6, 0, 5, 6, 0, 0, 0, 0, 5, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['LOC: Uralskich horin', 'LOC: Swjerdlowskej oblasći', 'LOC: Jekaterinburga']"
+36,"['Stolica', 'je', 'město', 'Krakow', '.']","[5, 0, 0, 5, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['LOC: Stolica', 'LOC: Krakow']"
+37,"['WEITERLEITUNG', 'Jan', 'Evangelista', 'Purkyně']","[0, 1, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']",['PER: Jan Evangelista Purkyně']
+38,"['Bush', ',', 'George', 'W', '.']","[1, 2, 2, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['PER: Bush , George W .']"
+39,"['Švabinský', ',', 'Max', '(', '1873–1962', ')']","[1, 2, 2, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['PER: Švabinský , Max']"
+40,"['Lěsny', 'hróšik', '(', ""''Lathyrus"", 'sylvestris', ""''"", ')']","[5, 6, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Lěsny hróšik']
+41,"['WEITERLEITUNG', 'Jewgenij', 'Aleksandrowič', 'Jewtušenko']","[0, 1, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']",['PER: Jewgenij Aleksandrowič Jewtušenko']
+42,"['Centro', 'Federal', 'de', 'Educação', 'Tecnológica', 'Celso', 'Suckow', 'da', 'Fonseca']","[3, 4, 4, 4, 4, 4, 4, 4, 4]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: Centro Federal de Educação Tecnológica Celso Suckow da Fonseca']
+43,"['Sterling', 'Morrison', '(', '1965–1971', ')']","[1, 2, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: Sterling Morrison']
+44,"['Zwjazk', '90', '/', 'Zeleni', '47', '(', '30,3', '%', ')']","[3, 4, 4, 4, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: Zwjazk 90 / Zeleni']
+45,"['Zwjazk', '90', '/', 'Zeleni', '(', '5', ')']","[3, 4, 4, 4, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: Zwjazk 90 / Zeleni']
+46,"['Klóšter', 'Marijiny', 'doł']","[3, 4, 4]","['hsb', 'hsb', 'hsb']",['ORG: Klóšter Marijiny doł']
+47,"['Wuchodnje', 'gmejny', 'běži', 'B', '96', '.']","[0, 0, 0, 3, 4, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: B 96']
+48,"['Křesćansko-socialna', 'unija', 'w', 'Bayerskej']","[3, 4, 4, 4]","['hsb', 'hsb', 'hsb', 'hsb']",['ORG: Křesćansko-socialna unija w Bayerskej']
+49,"['WEITERLEITUNG', 'Zwjazkowa', 'awtodróha', '4']","[0, 3, 4, 4]","['hsb', 'hsb', 'hsb', 'hsb']",['ORG: Zwjazkowa awtodróha 4']
+50,"['Leža', 'tři', 'kilometry', 'sewjerowuchodnje', 'stareho', 'města', 'a', '270', 'm', 'nad', 'mórskej', 'hładźinu', 'na', 'sewjernym', 'boku', 'Lubijskeje', 'hory', '(', '448', 'm', ')', 'a', 'njedaloko', 'zwjazkoweje', 'dróhi', '6', '.']","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 6, 0, 0, 0, 0, 0, 0, 3, 4, 4, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['LOC: Lubijskeje hory', 'ORG: zwjazkoweje dróhi 6']"
+51,"['Wokrjes', 'Šwikawa', '(', 'Šwikawa', ')']","[5, 6, 0, 3, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['LOC: Wokrjes Šwikawa', 'ORG: Šwikawa']"
+52,"['Leži', 'při', 'rěce', 'Barga', 'něhdźe', '120', 'kilometrow', 'wuchodnje', 'Krasnojarska', 'a', 'ma', 'něhdźe', 'dźesać', 'tysac', 'wobydlerjow', '.']","[0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Krasnojarska']
+53,"[""'"", ""''"", 'Nowouralsk', ""''"", ""'"", '(', ')', 'je', 'město', 'w', 'aziskim', 'dźělu', 'Ruskeje', 'federacije', '.']","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 5, 6, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['LOC: aziskim', 'LOC: Ruskeje federacije']"
+54,"['Rěčnica', 'KPF', 'je', 'Sahra', 'Wagenknecht', '.']","[0, 0, 0, 1, 2, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: Sahra Wagenknecht']
+55,"[""'"", ""''"", 'Kurlowo', ""''"", ""'"", '(', ')', 'je', 'městačko', 'w', 'Ruskej', 'federaciji', '.']","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 6, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Ruskej federaciji']
+56,"['mjeno', 'ruskeho', 'basnika', 'a', 'spisowaćela', ',', 'hlej', 'Michail', 'Jurjewič', 'Lermontow']","[0, 0, 0, 0, 0, 0, 0, 1, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: Michail Jurjewič Lermontow']
+57,"['Republikanska', 'strona', '(', 'Zjednoćene', 'staty', 'Ameriki', ')']","[3, 4, 4, 4, 4, 4, 4]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: Republikanska strona ( Zjednoćene staty Ameriki )']
+58,"['Zahrodna', 'popla', '(', 'Alcea', 'rosea', ')']","[5, 6, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Zahrodna popla']
+59,"['Leži', 'južnje', 'Čorneho', 'Halštrowa', 'při', 'zwjazkowej', 'dróze', '96', '.']","[0, 0, 5, 6, 0, 3, 4, 4, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['LOC: Čorneho Halštrowa', 'ORG: zwjazkowej dróze 96']"
+60,"['Piratska', 'strona', 'Němska']","[3, 4, 4]","['hsb', 'hsb', 'hsb']",['ORG: Piratska strona Němska']
+61,"['Historiske', 'srjedźišćo', 'města', 'je', 'dźěl', 'Swětoweho', 'kulturneho', 'herbstwa', 'UNESCO', '.']","[0, 0, 0, 0, 0, 3, 4, 4, 4, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: Swětoweho kulturneho herbstwa UNESCO']
+62,"['Wysoki', 'komonc', '(', 'Melilotus', 'altissimus', ')']","[5, 6, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Wysoki komonc']
+63,"['Rio', 'de', 'Janeiro', '-', '6', '029', '300', 'wobydlerjow']","[5, 6, 6, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Rio de Janeiro']
+64,"['Putin', ',', 'Wladimir', 'Wladimirowič']","[1, 2, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']","['PER: Putin , Wladimir Wladimirowič']"
+65,"['WEITERLEITUNG', 'Wladimir', 'Wolfowič', 'Žirinowskij']","[0, 1, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']",['PER: Wladimir Wolfowič Žirinowskij']
+66,"['WEITERLEITUNG', 'Marina', 'Iwanowna', 'Cwjetajewa']","[0, 1, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']",['PER: Marina Iwanowna Cwjetajewa']
+67,"[""'"", ""''"", 'Zawodoukowsk', ""''"", ""'"", '(', ""''Заводоуковск"", ""''"", ')', 'je', 'město', 'w', 'aziskim', 'dźělu', 'Ruskeje', 'federacije', '.']","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 5, 6, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['LOC: aziskim', 'LOC: Ruskeje federacije']"
+68,"['Leži', 'někak', 'wosomdźesać', 'kilometrow', 'sewjernje', 'Donjecka', 'a', 'ma', 'wjace', 'hač', 'šěsćdźesat', 'tysac', 'wobydlerjow', '.']","[0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Donjecka']
+69,"['Pasternak', ',', 'Boris', 'Leonidowič']","[1, 2, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']","['PER: Pasternak , Boris Leonidowič']"
+70,"['Sowjetsk', '(', 'oblasć', 'Kaliningrad', ')', '(', 'němsce', ""''Tilsit"", ""''"", ')']","[3, 4, 4, 4, 4, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: Sowjetsk ( oblasć Kaliningrad )']
+71,"[""'"", ""''"", 'Mjednogorsk', ""''"", ""'"", '(', ')', 'je', 'město', 'w', 'Ruskej', 'federaciji', '.']","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 6, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Ruskej federaciji']
+72,"['Tu', 'wuzběhuje', 'so', 'wosebje', 'literarno-historiska', 'studija', 'Jakub', 'Ćišinski“', ',', 'kotruž', 'napisa', 'k', 'pjećdźesatym', 'narodninam', 'basnika', '.']","[0, 0, 0, 0, 0, 0, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: Jakub Ćišinski“']
+73,"['Šahbaz', 'Bhatti', '(', '1968–2011', ')']","[1, 2, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: Šahbaz Bhatti']
+74,"['WEITERLEITUNG', 'Sowjetsk', '(', 'oblasć', 'Kaliningrad', ')']","[0, 3, 4, 4, 4, 4]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: Sowjetsk ( oblasć Kaliningrad )']
+75,"['WEITERLEITUNG', 'Irina', 'Wladimirowna', 'Odojewcewa']","[0, 1, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']",['PER: Irina Wladimirowna Odojewcewa']
+76,"['Předsyda', 'je', 'Nick', 'Griffin', '.']","[0, 0, 1, 2, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: Nick Griffin']
+77,"['Pawoł', 'VI', '.', '(', '1963–1978', ')']","[1, 2, 2, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: Pawoł VI .']
+78,"['Nationaldemokratische', 'Partei', 'Deutschlands']","[3, 4, 4]","['hsb', 'hsb', 'hsb']",['ORG: Nationaldemokratische Partei Deutschlands']
+79,"['WEITERLEITUNG', 'Noemi', '(', 'spěwarka', ')']","[0, 1, 2, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: Noemi ( spěwarka )']
+80,"['Leži', 'při', 'rěce', 'Tjukala', 'w', 'Omskej', 'oblasći', 'něhdźe', '120', 'kilometrow', 'sewjerozapadnje', 'Omska', 'Ma', 'něhdźe', 'dźesać', 'tysac', 'wobydlerjow', '.']","[0, 0, 0, 0, 0, 5, 6, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['LOC: Omskej oblasći', 'LOC: Omska']"
+81,"['Wjes', 'leži', 'juhowuchodnje', 'Rěčic', 'na', 'prawym', 'brjohu', 'Běłeho', 'Šepca', '.']","[0, 0, 0, 5, 0, 0, 0, 5, 6, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['LOC: Rěčic', 'LOC: Běłeho Šepca']"
+82,"['WEITERLEITUNG', 'Zwjazk', '90', '/', 'Zeleni']","[0, 3, 4, 4, 4]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: Zwjazk 90 / Zeleni']
+83,"['Wšědna', 'kosyčka', '(', ""''Erodium"", 'cicutarium', ""''"", '(', 'L.', ')', ""L'Hér"", '.']","[5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Wšědna kosyčka']
+84,"['Korla', 'Awgust', 'Kocor', '(', '1822–1904', ')', ',', 'wučer', ',', 'komponist', 'a', 'dirigent']","[1, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: Korla Awgust Kocor']
+85,"['WEITERLEITUNG', 'Hala', 'nad', 'Solawu']","[0, 5, 6, 6]","['hsb', 'hsb', 'hsb', 'hsb']",['LOC: Hala nad Solawu']
+86,"['WEITERLEITUNG', 'Jan', 'Evangelista', 'Purkyně']","[0, 1, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']",['PER: Jan Evangelista Purkyně']
+87,"['Ma', '6079', 'wobydlerjow', 'a', 'přestrjeń', '16,91', 'km²', '.']","[0, 0, 0, 0, 0, 0, 3, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: km²']
+88,"['WEITERLEITUNG', 'Boris', 'Jefimowič', 'Njemcow']","[0, 1, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']",['PER: Boris Jefimowič Njemcow']
+89,"['Alpski', 'sydrik', '(', ""''Galium"", 'anisophyllon', ""''"", ')']","[5, 6, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Alpski sydrik']
+90,"['Čorna', 'aronija', '(', ""''Aronia"", 'melanocarpa', ""''"", '(', 'Michx', '.']","[3, 4, 0, 0, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: Čorna aronija']
+91,"[""'"", ""''"", 'Mjelenki', ""''"", ""'"", '(', ')', 'je', 'městačko', 'w', 'Ruskej', 'federaciji', '.']","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 6, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Ruskej federaciji']
+92,"['Lew', ""''Nikolajewič"", ""''"", 'Tolstoj', ')', '.']","[1, 2, 2, 2, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","[""PER: Lew ''Nikolajewič '' Tolstoj""]"
+93,"['Blok', ',', 'Aleksander', 'A', '.']","[1, 2, 2, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['PER: Blok , Aleksander A .']"
+94,"['Wosebje', 'za', 'čas', 'Weimarskeje', 'republiki', 'wustupowaše', 'we', 'wšelakich', 'funkcijach', 'za', 'prawa', 'Serbow', '.']","[0, 0, 0, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Weimarskeje republiki']
+95,"['Słuša', 'ke', 'gmejnje', 'Wulka', 'Dubrawa', 'a', 'leži', '150', 'm', 'nad', 'mórskej', 'hładźinu', '.']","[0, 0, 0, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Wulka Dubrawa']
+96,"[""'"", ""''"", 'Njewel', ""''"", ""'"", '(', ')', 'je', 'město', 'w', 'Ruskej', 'federaciji', '.']","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 6, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Ruskej federaciji']
+97,"['Słušeja', 'k', 'městu', 'Kulow', 'a', 'leža', '134', 'm', 'nad', 'mórskej', 'hładźinu', 'na', 'woběmaj', 'stronomaj', 'Čorneho', 'Halštrowa', '.']","[0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 6, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['LOC: Kulow', 'LOC: Čorneho Halštrowa']"
+98,"['Swjatopluk', 'I', '.']","[1, 2, 2]","['hsb', 'hsb', 'hsb']",['PER: Swjatopluk I .']
+99,"['Leži', 'při', 'juhozapadnej', 'kromje', 'Choćebuza', ',', 'njedaloko', 'awtodróhi', '15', 'a', 'ma', 'něhdźe', '430', 'wobydlerjow', '.']","[0, 0, 0, 0, 5, 0, 0, 3, 4, 0, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['LOC: Choćebuza', 'ORG: awtodróhi 15']"
+100,"['Zwjazkowa', 'dróha', '96']","[3, 4, 4]","['hsb', 'hsb', 'hsb']",['ORG: Zwjazkowa dróha 96']
+101,"['WEITERLEITUNG', 'Zinaida', 'Nikolajewna', 'Gippius']","[0, 1, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']",['PER: Zinaida Nikolajewna Gippius']
+102,"['Sučkata', 'wrónica', '(', ""''Lepidium"", 'didymum', ""''"", 'L.', ',', 'Syn', '.']","[5, 6, 0, 0, 0, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Sučkata wrónica']
+103,"['Europska', 'dźiwja', 'kóčka']","[5, 6, 6]","['hsb', 'hsb', 'hsb']",['LOC: Europska dźiwja kóčka']
+104,"['Sydło', 'krajnoradneho', 'zarjada', 'je', 'Oranienburg', '.']","[0, 0, 0, 0, 5, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Oranienburg']
+105,"['WEITERLEITUNG', 'Pawel', 'Pjetrowič', 'Bažow']","[0, 1, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']",['PER: Pawel Pjetrowič Bažow']
+106,"['WEITERLEITUNG', 'Komunistiska', 'strona', 'Awstriskeje']","[0, 3, 4, 4]","['hsb', 'hsb', 'hsb', 'hsb']",['ORG: Komunistiska strona Awstriskeje']
+107,"['Rostlina', 'je', 'w', 'nimale', 'cyłej', 'Europje', 'rozšěrjena', '.']","[0, 0, 0, 0, 0, 5, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Europje']
+108,"['Swj.', 'Sofija', '(', 'Ohrid', ')']","[3, 4, 4, 4, 4]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: Swj. Sofija ( Ohrid )']
+109,"['WEITERLEITUNG', 'Domodedowo', '(', 'město', ')']","[0, 5, 6, 6, 6]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Domodedowo ( město )']
+110,"['***', 'Sewjerosamiska', 'rěč', '(', '5', ')']","[0, 3, 4, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: Sewjerosamiska rěč']
+111,"['Słónčnica', '(', 'ród', ')']","[5, 6, 6, 6]","['hsb', 'hsb', 'hsb', 'hsb']",['LOC: Słónčnica ( ród )']
+112,"['Lěwica', '(', '28', ')']","[3, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb']",['ORG: Lěwica']
+113,"['WEITERLEITUNG', 'Swobodna', 'demokratiska', 'strona']","[0, 3, 4, 4]","['hsb', 'hsb', 'hsb', 'hsb']",['ORG: Swobodna demokratiska strona']
+114,"['Leži', 'při', 'prawym', 'brjoze', 'rěki', 'Saar', 'sewjerozapadnje', 'Saarbrückena', '.']","[0, 0, 0, 0, 0, 5, 0, 5, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['LOC: Saar', 'LOC: Saarbrückena']"
+115,"[""'"", ""''"", 'Bjelomorsk', ""''"", ""'"", '(', ',', ""''Šuomua"", ""''"", ')', 'je', 'městačko', 'w', 'Ruskej', 'federaciji', '.']","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 6, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Ruskej federaciji']
+116,"[""'"", ""''"", 'Swjetogorsk', ""''"", ""'"", '(', ',', '1887–1948', ""''Enso"", ""''"", ')', 'je', 'město', 'w', 'Ruskej', 'federaciji', '.']","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 6, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Ruskej federaciji']
+117,"['WEITERLEITUNG', 'Literarny', 'institut', 'Maksima', 'Gorkeho']","[0, 3, 4, 4, 4]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: Literarny institut Maksima Gorkeho']
+118,"[""'"", ""''"", 'Sjerdobsk', ""''"", ""'"", '(', ')', 'je', 'město', 'w', 'Ruskej', 'federaciji', '.']","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 6, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Ruskej federaciji']
+119,"['Po', 'wuswobodźenja', 'wot', 'fašizma', 'přewzachu', 'komunistiscy', 'partizanojo', 'pod', 'wjednistwom', 'Josipa', 'Broza', 'Tita', 'knjejstwo', '.']","[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: Josipa Broza Tita']
+120,"['Žemŕ', '(', ""''Lubsko"", ""''"", ';', '19.332', 'wob', '.']","[5, 0, 0, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Žemŕ']
+121,"['Łaz', '(', '6.042', ')']","[5, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb']",['LOC: Łaz']
+122,"['W', 'staršich', 'žórłach', 'so', 'swójbje', 'sterkulijowych', 'rostlinow', '(', ""''Sterculiaceae"", ""''"", ')', 'zarjaduje', '.']","[0, 0, 0, 0, 0, 5, 6, 0, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: sterkulijowych rostlinow']
+123,"['WEITERLEITUNG', 'Wladimir', 'Iljič', 'Lenin']","[0, 1, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']",['PER: Wladimir Iljič Lenin']
+124,"['WEITERLEITUNG', 'Wladimir', 'Wladimirowič', 'Majakowskij']","[0, 1, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']",['PER: Wladimir Wladimirowič Majakowskij']
+125,"['Ivo', 'Andrić', '(', '1892-1975', ')', ',', 'juhosłowjanski', 'spisowaćel', 'a', 'politikar', ',', 'rodźeny', 'w', 'gmejnskim', 'dźělu', 'Dolac']","[1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: Ivo Andrić']
+126,"['Universidade', 'Fundação', 'Mineira', 'de', 'Educação', 'e', 'Cultura']","[3, 4, 4, 4, 4, 4, 4]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: Universidade Fundação Mineira de Educação e Cultura']
+127,"[""'"", ""''"", 'Njeman', ""''"", ""'"", '(', ',', ',', ',', ')', 'je', 'městačko', 'w', 'Ruskej', 'federaciji', '.']","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 6, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Ruskej federaciji']
+128,"['Krušwina', '(', ""''Pyrus"", 'communis', ""''"", ')']","[3, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: Krušwina']
+129,"['Švehla', ',', 'Antonín', '(', '1873–1933', ')']","[1, 2, 2, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['PER: Švehla , Antonín']"
+130,"['WEITERLEITUNG', 'Boris', 'Borisowič', 'Grjebjenšćikow']","[0, 1, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']",['PER: Boris Borisowič Grjebjenšćikow']
+131,"['Witkojc', ',', 'Mina', '(', '1893–1975', ')', ',', 'serbska', 'basnica', 'a', 'spisowaćelka']","[1, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['PER: Witkojc , Mina']"
+132,"['WEITERLEITUNG', 'Sowjetsk', '(', 'oblasć', 'Kaliningrad', ')']","[0, 3, 4, 4, 4, 4]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: Sowjetsk ( oblasć Kaliningrad )']
+133,"['Wone', 'ma', 'tři', 'miliony', 'wobydlerjow', 'a', 'je', 'třeće', 'najwjetše', 'město', 'Europskeje', 'unije', '.']","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 4, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: Europskeje unije']
+134,"['Martin', 'Gerschwitz', '(', '2005-2012', ')']","[1, 2, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: Martin Gerschwitz']
+135,"['WEITERLEITUNG', 'Zwjazkowa', 'awtodróha', '4']","[0, 3, 4, 4]","['hsb', 'hsb', 'hsb', 'hsb']",['ORG: Zwjazkowa awtodróha 4']
+136,"['Jan', 'Arnošt', 'Smoler', '(', '1816–1884', ')']","[1, 2, 2, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: Jan Arnošt Smoler']
+137,"['Křesćanski', 'zwjazk', 'młodych', 'mužow']","[3, 4, 4, 4]","['hsb', 'hsb', 'hsb', 'hsb']",['ORG: Křesćanski zwjazk młodych mužow']
+138,"['Leža', 'wósom', 'kilometrow', 'sewjernje', 'stareho', 'města', 'a', '186', 'm', 'nad', 'mórskej', 'hładźinu', 'na', 'woběmaj', 'bokomaj', 'Lubaty', '.']","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Lubaty']
+139,"['Hainichen', '(', '8.812', ')']","[5, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb']",['LOC: Hainichen']
+140,"['Gottfried', 'Wilhelm', 'Leibniz', '(', '1646–1716', ')', ',', 'filozof', ',', 'politikar', 'a', 'uniwersalny', 'wučenc']","[1, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: Gottfried Wilhelm Leibniz']
+141,"['WEITERLEITUNG', 'Bjedrich', 'II.', '(', 'Pruska', ')']","[0, 1, 2, 2, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: Bjedrich II. ( Pruska )']
+142,"['Ray', 'Manzarek', '(', '1965-1973', ')']","[1, 2, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: Ray Manzarek']
+143,"[""'"", ""''"", 'Njelidowo', ""''"", ""'"", '(', ')', 'je', 'město', 'w', 'Ruskej', 'federaciji', '.']","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 6, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Ruskej federaciji']
+144,"['Leži', 'něhdźe', '45', 'kilometrow', 'na', 'zapad', 'wot', 'Luhanska', 'a', 'ma', 'nimale', '120', 'tysac', 'wobydlerjow', '.']","[0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Luhanska']
+145,"[""''Potentilla"", 'opaca', ""''"", 'L', '.']","[0, 0, 0, 1, 2]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: L .']
+146,"['Wone', 'słušeja', 'hač', 'do', 'dźensnišeho', 'ke', 'Commonwealthej', '.']","[0, 0, 0, 0, 0, 0, 3, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: Commonwealthej']
+147,"['Socialdemokratiski', 'zwjazk', 'Makedonskeje']","[3, 4, 4]","['hsb', 'hsb', 'hsb']",['ORG: Socialdemokratiski zwjazk Makedonskeje']
+148,"['Němska', 'narodna', 'biblioteka']","[3, 4, 4]","['hsb', 'hsb', 'hsb']",['ORG: Němska narodna biblioteka']
+149,"['Jan', 'Krygaŕ', '(', '1598–1662', ')']","[1, 2, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: Jan Krygaŕ']
+150,"['WEITERLEITUNG', 'Železniska', 'čara', 'Berlin–Zhorjelc']","[0, 3, 4, 4]","['hsb', 'hsb', 'hsb', 'hsb']",['ORG: Železniska čara Berlin–Zhorjelc']
+151,"['Leži', 'při', 'rěce', 'Dnjepr', 'někak', '350', 'kilometrow', 'wot', 'Kijewa', 'Ma', '230', 'tysac', 'wobydlerjow', '.']","[0, 0, 0, 3, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['ORG: Dnjepr', 'LOC: Kijewa']"
+152,"['Jan', 'Pawoł', 'II', '.', '(', '1978–2005', ')']","[1, 2, 2, 2, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: Jan Pawoł II .']
+153,"['WEITERLEITUNG', 'Tachantska', 'cyrkej', 'swj.', 'Pětra']","[0, 3, 4, 4, 4]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: Tachantska cyrkej swj. Pětra']
+154,"['Kosmaty', 'žiłan', '(', ""''Agrimonia"", 'pilosa', ""''"", ')']","[5, 6, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Kosmaty žiłan']
+155,"['Leža', 'něhdźe', '100', 'kilometrow', 'zapadnje', 'wot', 'brjoha', 'Marokka', 'a', 'Zapadneje', 'Sahary', 'w', 'Africe', 'a', 'słušeja', 'k', 'Španiskej', '(', 'a', 'potajkim', 'k', 'Europskej', 'uniji', ')', '.']","[0, 0, 0, 0, 0, 0, 0, 5, 0, 5, 6, 0, 5, 0, 0, 0, 5, 0, 0, 0, 0, 3, 4, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['LOC: Marokka', 'LOC: Zapadneje Sahary', 'LOC: Africe', 'LOC: Španiskej', 'ORG: Europskej uniji']"
+156,"['Běži', 'přez', 'južnu', 'Běłorusku', 'a', 'sewjernu', 'Ukrainu', 'a', 'je', 'najwjetši', 'přitok', 'Dnjepra', '.']","[0, 0, 0, 5, 0, 0, 5, 0, 0, 0, 0, 3, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['LOC: Běłorusku', 'LOC: Ukrainu', 'ORG: Dnjepra']"
+157,"['Leža', 'zapadnje', 'Wojerec', 'a', 'wuchodnje', 'Wikowa', 'při', 'Čornym', 'Halštrowje', '.']","[0, 0, 5, 0, 0, 5, 0, 5, 6, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['LOC: Wojerec', 'LOC: Wikowa', 'LOC: Čornym Halštrowje']"
+158,"['Leža', 'w', 'dólčku', 'zapadnje', 'zwjazkoweje', 'dróhi', '96', '.']","[0, 0, 0, 0, 3, 4, 4, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: zwjazkoweje dróhi 96']
+159,"['WEITERLEITUNG', 'Wokrjes', 'Sewjerna', 'Sakska']","[0, 5, 6, 6]","['hsb', 'hsb', 'hsb', 'hsb']",['LOC: Wokrjes Sewjerna Sakska']
+160,"['WEITERLEITUNG', 'Wladimir', 'Iljič', 'Lenin']","[0, 1, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']",['PER: Wladimir Iljič Lenin']
+161,"['**', 'Pyšny', 'trubownik', '(', ""''Catalpa"", 'speciosa', ""''"", '(', 'Warder', ')', 'Engelm', '.']","[0, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Pyšny trubownik']
+162,"['Rostlina', 'je', 'jedyn', 'ze', 'staršeju', 'čerwjeneho', 'jěrowca', '(', ""''Aesculus"", 'x', 'carnea', ""''"", ')', '.']","[0, 0, 0, 0, 0, 5, 6, 0, 0, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: čerwjeneho jěrowca']
+163,"['Leibniz', ',', 'Gottfried', 'Wilhelm']","[1, 2, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']","['PER: Leibniz , Gottfried Wilhelm']"
+164,"['Leži', 'zapadnje', 'Drježdźan', 'při', 'awtodróze', '4', 'a', 'ma', 'něhdźe', '13.500', 'wobydlerjow', '.']","[0, 0, 5, 0, 3, 4, 0, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['LOC: Drježdźan', 'ORG: awtodróze 4']"
+165,"['Najskerje', 'so', 'móže', 'podobny', 'poćah', 'k', 'georgiskemu', 'słowu', ""''ღვინო"", ""''"", '[ghwino]', 'měnić', '.']","[0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: georgiskemu']
+166,"[""'"", ""''"", 'Kiseljowsk', ""''"", ""'"", '(', ""''Киселёвск"", ""''"", ')', 'je', 'město', 'w', 'aziskim', 'dźělu', 'Ruskeje', 'federacije', '.']","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 5, 6, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['LOC: aziskim', 'LOC: Ruskeje federacije']"
+167,"['Wološin', ',', 'Maksimilian', 'Aleksandrowič']","[1, 2, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']","['PER: Wološin , Maksimilian Aleksandrowič']"
+168,"['Rostlina', 'je', 'domjaca', 'w', 'juhowuchodnej', 'Europje', 'na', 'tamnišich', 'lěsnych', 'kromach', 'a', 'skalnych', 'zwisach', '.']","[0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Europje']
+169,"['Leži', 'při', 'Zwjazkowej', 'awtodróze', '13', 'a', 'ma', 'wokoło', '2.200', 'wobydlerjow', '.']","[0, 0, 3, 4, 4, 0, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: Zwjazkowej awtodróze 13']
+170,"['WEITERLEITUNG', 'Křesťanská', 'a', 'demokratická', 'unie', '–', 'Československá', 'strana', 'lidová']","[0, 3, 4, 4, 4, 4, 4, 4, 4]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: Křesťanská a demokratická unie – Československá strana lidová']
+171,"[""'"", ""''"", 'Konstantinowsk', ""''"", ""'"", '(', ')', 'je', 'město', 'w', 'juhu', 'Ruskeje', 'federacije', '.']","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 6, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Ruskeje federacije']
+172,"['Křesćansko-socialna', 'unija', 'w', 'Bayerskej']","[3, 4, 4, 4]","['hsb', 'hsb', 'hsb', 'hsb']",['ORG: Křesćansko-socialna unija w Bayerskej']
+173,"['British', 'National', 'Party']","[3, 4, 4]","['hsb', 'hsb', 'hsb']",['ORG: British National Party']
+174,"['Leži', 'wuchodnje', 'Mišna', 'a', 'ma', 'wokoło', '10.000', 'wobydlerjow', '.']","[0, 0, 5, 0, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Mišna']
+175,"['Leži', 'tři', 'kilometry', 'sewjerozapadnje', 'stareho', 'města', 'a', '288', 'm', 'nad', 'mórskej', 'hładźinu', 'při', 'zwjazkowej', 'dróze', '6', '.']","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 4, 4, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: zwjazkowej dróze 6']
+176,"['Paul', 'McCartney', '(', '1960-1970', ')']","[1, 2, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: Paul McCartney']
+177,"[""'"", ""''"", 'Iwangorod', ""''"", ""'"", '(', ',', ""''Jaanilinn"", ""''"", ')', 'je', 'město', 'w', 'Ruskej', 'federaciji', '.']","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 6, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Ruskej federaciji']
+178,"['******', 'paraguayska', 'Guaranišćina', '(', 'ca', '.']","[0, 3, 4, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: paraguayska Guaranišćina']
+179,"['Zažna', 'pyšnica', '(', ""''Agapanthus"", 'umbellatus', ""''"", ',', 'syn', '.']","[3, 4, 0, 0, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: Zažna pyšnica']
+180,"['WEITERLEITUNG', 'Ludwik', 'Lejzer', 'Zamenhof']","[0, 1, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']",['PER: Ludwik Lejzer Zamenhof']
+181,"['Lěwica', '(', '16', ')']","[3, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb']",['ORG: Lěwica']
+182,"['Leži', '20', 'kilometrow', 'sewjerowuchodnje', 'Kamjenicy', 'při', 'zwjazkowej', 'awtodróze', '4', '.']","[0, 0, 0, 0, 5, 0, 3, 4, 4, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['LOC: Kamjenicy', 'ORG: zwjazkowej awtodróze 4']"
+183,"['Přez', 'gmejnski', 'teritorij', 'wjedźe', 'awtodróha', 'A', '13', '(', 'Berlin', ')', '.']","[0, 0, 0, 0, 3, 4, 4, 0, 5, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['ORG: awtodróha A 13', 'LOC: Berlin']"
+184,"['****', 'Magelanska', 'fuchsija', '(', ""''Fuchsia"", 'magellanica', ""''"", ')']","[0, 5, 6, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Magelanska fuchsija']
+185,"['WEITERLEITUNG', 'Swjatlana', 'Aljaksandrawna', 'Aleksijewič']","[0, 1, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']",['PER: Swjatlana Aljaksandrawna Aleksijewič']
+186,"['Ernesto', 'Che', 'Guevara']","[1, 2, 2]","['hsb', 'hsb', 'hsb']",['PER: Ernesto Che Guevara']
+187,"['Přisłuša', 'hač', 'do', 'dźensnišeho', 'Commonwealthej', '.']","[0, 0, 0, 0, 3, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: Commonwealthej']
+188,"['von', 'Däniken', ',', 'Erich']","[1, 2, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']","['PER: von Däniken , Erich']"
+189,"['Słuša', 'k', 'městu', 'Kulow', 'a', 'leži', '123', 'metrow', 'nad', 'mórskej', 'hładźinu', 'při', 'Čornym', 'Halštrowje', '.']","[0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 5, 6, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['LOC: Kulow', 'LOC: Čornym Halštrowje']"
+190,"['WEITERLEITUNG', 'Sakski', 'krajny', 'sejm']","[0, 3, 4, 4]","['hsb', 'hsb', 'hsb', 'hsb']",['ORG: Sakski krajny sejm']
+191,"['WEITERLEITUNG', 'Robert', 'Iwanowič', 'Roždestwjenskij']","[0, 1, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']",['PER: Robert Iwanowič Roždestwjenskij']
+192,"['wot', 'Jana', 'Pawoła', 'II', '.', 'zbóžnoprajeny', '.']","[0, 1, 2, 2, 2, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: Jana Pawoła II .']
+193,"[""'"", ""''"", 'Soročinsk', ""''"", ""'"", '(', ')', 'je', 'město', 'w', 'Ruskej', 'federaciji', '.']","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 6, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Ruskej federaciji']
+194,"['Hišće', 'Carl', 'von', 'Linné', 'rozrjadowaše', 'swój', ""''Systema"", 'naturae', ""''"", 'wotpowědnje', 'tomu', '.']","[0, 1, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: Carl von Linné']
+195,"[""'"", ""''"", 'Rybnoje', ""''"", ""'"", '(', ')', 'je', 'město', 'w', 'Ruskej', 'federaciji', '.']","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 6, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Ruskej federaciji']
+196,"['WEITERLEITUNG', 'Zwjazkowa', 'awtodróha', '13']","[0, 3, 4, 4]","['hsb', 'hsb', 'hsb', 'hsb']",['ORG: Zwjazkowa awtodróha 13']
+197,"['Rostlina', 'je', 'w', 'nimale', 'cyłej', 'Europje', 'rozšěrjena', '.']","[0, 0, 0, 0, 0, 5, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Europje']
+198,"['Klóšter', 'Marijiny', 'doł']","[3, 4, 4]","['hsb', 'hsb', 'hsb']",['ORG: Klóšter Marijiny doł']
+199,"['WEITERLEITUNG', 'Zwjazkowa', 'awtodróha', '17']","[0, 3, 4, 4]","['hsb', 'hsb', 'hsb', 'hsb']",['ORG: Zwjazkowa awtodróha 17']
+200,"['Klosterwasser', '–', 'Klóšterska', 'woda']","[0, 0, 5, 6]","['hsb', 'hsb', 'hsb', 'hsb']",['LOC: Klóšterska woda']
+201,"['Centro', 'Federal', 'de', 'Educação', 'Tecnológica', 'Celso', 'Suckow', 'da', 'Fonseca']","[3, 4, 4, 4, 4, 4, 4, 4, 4]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: Centro Federal de Educação Tecnológica Celso Suckow da Fonseca']
+202,"['mjeno', 'ruskeho', 'basnika', 'a', 'spisowaćela', ',', 'hlej', 'Aleksander', 'Sergejewič', 'Puškin']","[0, 0, 0, 0, 0, 0, 0, 1, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: Aleksander Sergejewič Puškin']
+203,"['Klóšter', 'Marijiny', 'doł']","[3, 4, 4]","['hsb', 'hsb', 'hsb']",['ORG: Klóšter Marijiny doł']
+204,"['Rostlina', 'je', 'w', 'Europje', 'rozšěrjena', '.']","[0, 0, 0, 5, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Europje']
+205,"['Ma', 'někak', 'dźesać', 'milionow', 'wobydlerjow', 'a', 'přestrjeń', '605', 'km²', '.']","[0, 0, 0, 0, 0, 0, 0, 0, 3, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: km²']
+206,"['Hrjehor', 'XV', '.', '(', '1621–1623', ')']","[1, 2, 2, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: Hrjehor XV .']
+207,"['ludźimi', ',', 'kotryž', 'rěča', 'arabsce', ')', '.']","[0, 0, 0, 0, 3, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: arabsce']
+208,"['Leži', 'něhdźe', 'pjeć', 'kilometrow', 'juhozapadnje', 'Choćebuza', 'při', 'awtodróze', '15', 'a', 'ma', 'wokoło', '750', 'wobydlerjow', '.']","[0, 0, 0, 0, 0, 5, 0, 3, 4, 0, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['LOC: Choćebuza', 'ORG: awtodróze 15']"
+209,"['Universidade', 'Federal', 'de', 'Minas', 'Gerais']","[3, 4, 4, 4, 4]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: Universidade Federal de Minas Gerais']
+210,"['Leži', 'něhdźe', 'jědnaće', 'kilometrow', 'juhozapadnje', 'Choćebuza', 'bjezposrědnje', 'při', 'awtodróze', '15', 'a', 'ma', 'wokoło', 'sto', 'wobydlerjow', '.']","[0, 0, 0, 0, 0, 5, 0, 0, 3, 4, 0, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['LOC: Choćebuza', 'ORG: awtodróze 15']"
+211,"[')', 'kaž', 'tež', 'w', 'Zjednoćenym', 'kralestwje', 'a', 'Italskej', '.']","[0, 0, 0, 0, 5, 6, 0, 5, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['LOC: Zjednoćenym kralestwje', 'LOC: Italskej']"
+212,"['Słušeja', 'ke', 'gmejnje', 'Hornja', 'Hórka', 'a', 'leža', 'mjez', '225', 'a', '245', 'm', 'nad', 'mórskej', 'hładźinu', 'na', 'prawej', 'stronje', 'Sprjewje', '.']","[0, 0, 0, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['LOC: Hornja Hórka', 'LOC: Sprjewje']"
+213,"['Karl', 'Heinrich', 'Koch']","[1, 2, 2]","['hsb', 'hsb', 'hsb']",['PER: Karl Heinrich Koch']
+214,"['WEITERLEITUNG', 'Klóšter', 'Marijiny', 'doł']","[0, 3, 4, 4]","['hsb', 'hsb', 'hsb', 'hsb']",['ORG: Klóšter Marijiny doł']
+215,"['Masaryk', ',', 'Tomáš', 'Garrigue']","[1, 2, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']","['PER: Masaryk , Tomáš Garrigue']"
+216,"['David', 'Gilmour', '(', '1968-1995', ')']","[1, 2, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: David Gilmour']
+217,"[""'"", ""''"", 'Michajlow', ""''"", ""'"", '(', ')', 'je', 'město', 'w', 'Ruskej', 'federaciji', '.']","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 6, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Ruskej federaciji']
+218,"['Falkenberg', 'nad', 'Halštrowom']","[5, 6, 6]","['hsb', 'hsb', 'hsb']",['LOC: Falkenberg nad Halštrowom']
+219,"['Leža', 'štyri', 'kilometry', 'sewjerowuchodnje', 'stareho', 'města', 'a', '247', 'm', 'nad', 'mórskej', 'hładźinu', 'pod', 'Lubijskej', 'horu', '(', '448', 'm', ')', 'a', 'Hrodźišćom', '(', '455', 'm', ')', 'a', 'při', 'zwjazkowej', 'dróze', '6', '.']","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 6, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 3, 4, 4, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['LOC: Lubijskej horu', 'LOC: Hrodźišćom', 'ORG: zwjazkowej dróze 6']"
+220,"['Podgorica', '(', 'Čorna', 'Hora', ')']","[5, 0, 5, 6, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['LOC: Podgorica', 'LOC: Čorna Hora']"
+221,"['Derbno', 'p.', 'Gubina', '(', ')']","[5, 6, 6, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Derbno p. Gubina']
+222,"['Rostlina', 'je', 'w', 'Europje', 'rozšěrjena', '.']","[0, 0, 0, 5, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Europje']
+223,"['WEITERLEITUNG', 'Konstantin', 'Dmitrijewič', 'Balmont']","[0, 1, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']",['PER: Konstantin Dmitrijewič Balmont']
+224,"['Swjatopluk', 'I', '.']","[1, 2, 2]","['hsb', 'hsb', 'hsb']",['PER: Swjatopluk I .']
+225,"['WEITERLEITUNG', 'Wjazońca', '(', 'gmejna', ')']","[0, 5, 6, 6, 6]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Wjazońca ( gmejna )']
+226,"['WEITERLEITUNG', 'Kosta', 'Lewanowič', 'Chetagurow']","[0, 1, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']",['PER: Kosta Lewanowič Chetagurow']
+227,"[""'"", ""''"", 'Košice', ""''"", ""'"", '(', ""''Kaschau"", ""''"", ')', 'su', 'druhe', 'najwjetše', 'město', 'Słowakskeje', '.']","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Słowakskeje']
+228,"['***', 'Całtki', '(', ""''Convallaria"", 'majalis', ""''"", 'L', '.', ')']","[0, 3, 0, 0, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: Całtki']
+229,"['Po', 'abiturje', 'je', 'studij', 'germanistiki', 'započała', '.']","[0, 0, 0, 0, 3, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: germanistiki']
+230,"['Klóšter', 'Marijiny', 'doł']","[3, 4, 4]","['hsb', 'hsb', 'hsb']",['ORG: Klóšter Marijiny doł']
+231,"['Omsk', '(', '1,15', ')']","[5, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb']",['LOC: Omsk']
+232,"['Johann', 'Gottlieb', 'Fichte', '(', '1762–1814', ')', ',', 'filozof', 'a', 'kubłar']","[1, 2, 2, 0, 0, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: Johann Gottlieb Fichte']
+233,"['Po', 'tym', 'přizamknje', 'studij', 'mediciny', 'při', 'Praskej', 'uniwersiće', '.']","[0, 0, 0, 0, 0, 0, 3, 4, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: Praskej uniwersiće']
+234,"['Jeničke', 'dalše', 'wjetše', 'město', 'je', 'Wolžsk', 'z', '55.000', 'wobydlerjemi', '.']","[0, 0, 0, 0, 0, 5, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Wolžsk']
+235,"['Puškin', ',', 'Aleksander', 'Sergejewič']","[1, 2, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']","['PER: Puškin , Aleksander Sergejewič']"
+236,"['WEITERLEITUNG', 'Zwjazkowa', 'awtodróha', '17']","[0, 3, 4, 4]","['hsb', 'hsb', 'hsb', 'hsb']",['ORG: Zwjazkowa awtodróha 17']
+237,"['WEITERLEITUNG', 'Ernesto', 'Che', 'Guevara']","[0, 1, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']",['PER: Ernesto Che Guevara']
+238,"['Wolfgang', 'Amadeus', 'Mozart', '(', '1756–1791', ')', ',', 'komponist']","[1, 2, 2, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: Wolfgang Amadeus Mozart']
+239,"['*1970', 'Lipsk', ',', 'Drježdźany', ',', 'Zwěrin', ',', 'Roztok']","[0, 5, 0, 5, 0, 5, 0, 5]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['LOC: Lipsk', 'LOC: Drježdźany', 'LOC: Zwěrin', 'LOC: Roztok']"
+240,"[""'"", ""''"", 'Kedrowyj', ""''"", ""'"", '(', ""''Кедровый"", ""''"", ')', 'je', 'město', 'w', 'aziskim', 'dźělu', 'Ruskeje', 'federacije', '.']","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 5, 6, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['LOC: aziskim', 'LOC: Ruskeje federacije']"
+241,"['WEITERLEITUNG', 'Křesćansko-demokratiska', 'unija', 'Němskeje']","[0, 3, 4, 4]","['hsb', 'hsb', 'hsb', 'hsb']",['ORG: Křesćansko-demokratiska unija Němskeje']
+242,"[""'"", ""''"", 'Šagonar', ""''"", ""'"", '(', ')', 'je', 'město', 'w', 'aziskim', 'dźělu', 'Ruskeje', 'federacije', '.']","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 5, 6, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['LOC: aziskim', 'LOC: Ruskeje federacije']"
+243,"['Worcyn', ""''"", '(', 'Wurzen', ')', ""''""]","[5, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Worcyn']
+244,"['WEITERLEITUNG', 'Železniska', 'čara', 'Berlin–Zhorjelc']","[0, 3, 4, 4]","['hsb', 'hsb', 'hsb', 'hsb']",['ORG: Železniska čara Berlin–Zhorjelc']
+245,"['Kocor', ',', 'Korla', 'Awgust']","[1, 2, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']","['PER: Kocor , Korla Awgust']"
+246,"['Zwjazkowa', 'awtodróha', '15']","[3, 4, 4]","['hsb', 'hsb', 'hsb']",['ORG: Zwjazkowa awtodróha 15']
+247,"['Leži', 'při', 'rěce', 'Kušajka', 'we', 'wuchodnym', 'předkraju', 'Uralskich', 'horin', 'w', 'Swjerdlowskej', 'oblasći', 'něhdźe', '190', 'kilometrow', 'sewjernje', 'Jekaterinburga', '.']","[0, 0, 0, 0, 0, 0, 0, 5, 6, 0, 5, 6, 0, 0, 0, 0, 5, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['LOC: Uralskich horin', 'LOC: Swjerdlowskej oblasći', 'LOC: Jekaterinburga']"
+248,"['Leži', '13', 'kilometrow', 'sewjerozapadnje', 'Kamjenca', 'a', '18', 'kilometrow', 'juhozapadnje', 'Wojerec', 'a', 'mjezuje', 'z', 'Braniborskej', '.']","[0, 0, 0, 0, 5, 0, 0, 0, 0, 5, 0, 0, 0, 5, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['LOC: Kamjenca', 'LOC: Wojerec', 'LOC: Braniborskej']"
+249,"['Hall', ',', 'Robert', 'Anderson', 'Jr', '.']","[1, 2, 2, 2, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['PER: Hall , Robert Anderson Jr .']"
+250,"['Dalše', 'wjetše', 'města', 'su', 'Alagir', '(', '21.000', 'wobydlerjow', ')', ',', 'Beslan', '(', '36.000', ')', 'a', 'Mozdok', '(', '39.000', ')', '.']","[0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 3, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['LOC: Alagir', 'LOC: Beslan', 'ORG: Mozdok']"
+251,"['Jeničce', 'Kronos', ',', 'najmłódši', ',', 'so', 'zwólniwje', 'wupraji', '.']","[0, 1, 0, 0, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: Kronos']
+252,"['WEITERLEITUNG', 'Michail', 'Aleksandrowič', 'Šolochow']","[0, 1, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']",['PER: Michail Aleksandrowič Šolochow']
+253,"['WEITERLEITUNG', 'Wladimir', 'Wolfowič', 'Žirinowskij']","[0, 1, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']",['PER: Wladimir Wolfowič Žirinowskij']
+254,"['Roždestwjenskij', ',', 'Robert', 'Iwanowič']","[1, 2, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']","['PER: Roždestwjenskij , Robert Iwanowič']"
+255,"['**', 'Wulkopłodowa', 'tymjenka', '(', ""''Vaccinium"", 'macrocarpon', ""''"", 'Aiton', ')']","[0, 5, 6, 0, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Wulkopłodowa tymjenka']
+256,"['Johannes', 'Rau', '(', '1931–2006', ')']","[1, 2, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: Johannes Rau']
+257,"['*****', 'Pisana', 'bónčawa', '(', ""''Nymphaea"", 'colorata', ""''"", ')']","[0, 5, 6, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Pisana bónčawa']
+258,"['Mato', 'Kosyk', '(', '1853–1940', ')', '–', 'basnik']","[1, 2, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: Mato Kosyk']
+259,"['Zwjazkowa', 'dróha', '96', '(', 'Budyšin', ')', 'wjedźe', 'přez', 'wjesku', '.']","[3, 4, 4, 0, 5, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['ORG: Zwjazkowa dróha 96', 'LOC: Budyšin']"
+260,"['Adolf', 'Černý', '(', 'wud', '.']","[1, 2, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: Adolf Černý']
+261,"['WEITERLEITUNG', 'Iwan', 'Sergejewič', 'Turgenjew']","[0, 1, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']",['PER: Iwan Sergejewič Turgenjew']
+262,"['Kóždy', 'kraj', 'ma', '–', 'wotwisnje', 'wot', 'ličby', 'wobydlerjow', '–', 'wěstu', 'ličbu', 'reprezentantow', 'w', 'zwjazkowej', 'radźe', '.']","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 4, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: zwjazkowej radźe']
+263,"['Benedikt', 'XVI', '.']","[1, 2, 2]","['hsb', 'hsb', 'hsb']",['PER: Benedikt XVI .']
+264,"[""'"", ""''"", 'Starodub', ""''"", ""'"", '(', ')', 'je', 'město', 'w', 'Ruskej', 'federaciji', '.']","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 6, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Ruskej federaciji']
+265,"['PDS', 'bě', 'předchadnica', 'dźensnišeje', 'Lěwicy', '.']","[0, 0, 0, 0, 3, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: Lěwicy']
+266,"['Banja', 'Luka', '–', '250.000', 'wobydlerjow']","[5, 6, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Banja Luka']
+267,"['WEITERLEITUNG', 'Andrej', 'Wadimowič', 'Makarjewič']","[0, 1, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']",['PER: Andrej Wadimowič Makarjewič']
+268,"['WEITERLEITUNG', 'Zwjazkowa', 'awtodróha', '17']","[0, 3, 4, 4]","['hsb', 'hsb', 'hsb', 'hsb']",['ORG: Zwjazkowa awtodróha 17']
+269,"['Tomisław', 'bě', 'najwuchodniša', 'wjes', 'historiskeje', 'Hornjeje', 'Łužicy', '.']","[0, 0, 0, 0, 0, 5, 6, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Hornjeje Łužicy']
+270,"['Woznjesenskij', ',', 'Andrej', 'Andrejewič']","[1, 2, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']","['PER: Woznjesenskij , Andrej Andrejewič']"
+271,"['WEITERLEITUNG', 'Kosta', 'Lewanowič', 'Chetagurow']","[0, 1, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']",['PER: Kosta Lewanowič Chetagurow']
+272,"['Zwjazkowa', 'awtodróha', '15']","[3, 4, 4]","['hsb', 'hsb', 'hsb']",['ORG: Zwjazkowa awtodróha 15']
+273,"['Centro', 'Federal', 'de', 'Educação', 'Tecnológica', 'de', 'Minas', 'Gerais']","[3, 4, 4, 4, 4, 4, 4, 4]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: Centro Federal de Educação Tecnológica de Minas Gerais']
+274,"[""'"", ""''"", 'Bolochowo', ""''"", ""'"", '(', ')', 'je', 'město', 'w', 'Ruskej', 'federaciji', '.']","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 6, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Ruskej federaciji']
+275,"['Smoler', ',', 'Jan', 'Arnošt', '(', '1816–1884', ')']","[1, 2, 2, 2, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['PER: Smoler , Jan Arnošt']"
+276,"['Francoski', 'sydrik', '(', ""''Galium"", 'parisiense', ""''"", ')']","[5, 6, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Francoski sydrik']
+277,"['Universidade', 'Estadual', 'de', 'Feira', 'de', 'Santana']","[3, 4, 4, 4, 4, 4]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: Universidade Estadual de Feira de Santana']
+278,"['WEITERLEITUNG', 'Robert', 'Iwanowič', 'Roždestwjenskij']","[0, 1, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']",['PER: Robert Iwanowič Roždestwjenskij']
+279,"['Alternatiwa', 'za', 'Němsku']","[3, 4, 4]","['hsb', 'hsb', 'hsb']",['ORG: Alternatiwa za Němsku']
+280,"['WEITERLEITUNG', 'Deutsche', 'Kommunistische', 'Partei']","[0, 3, 4, 4]","['hsb', 'hsb', 'hsb', 'hsb']",['ORG: Deutsche Kommunistische Partei']
+281,"['WEITERLEITUNG', 'Nationaldemokratische', 'Partei', 'Deutschlands']","[0, 3, 4, 4]","['hsb', 'hsb', 'hsb', 'hsb']",['ORG: Nationaldemokratische Partei Deutschlands']
+282,"['Leži', 'při', 'rěce', 'Modłeji', 'někak', 'dwaceći', 'kilometrow', 'sewjerowuchodnje', 'wot', 'Lipska', 'a', 'dwaceći', 'kilometrow', 'juhozapadnje', 'wot', 'Torhowa', '.']","[0, 0, 0, 5, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 5, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['LOC: Modłeji', 'LOC: Lipska', 'LOC: Torhowa']"
+283,"['Jeje', 'zarjadniske', 'sydło', 'a', 'najwjetše', 'město', 'je', 'Saratow', 'z', 'wjace', 'hač', '800.000', 'wobydlerjemi', '.']","[0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Saratow']
+284,"['WEITERLEITUNG', 'Marina', 'Iwanowna', 'Cwjetajewa']","[0, 1, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']",['PER: Marina Iwanowna Cwjetajewa']
+285,"['Jako', ""'"", ""''"", 'ewangelij', ""''"", ""'"", 'abo', ""'"", ""''"", 'sćenje', ""''"", ""'"", 'płaća', 'prěnje', 'štyri', 'knihi', 'Noweho', 'zakonja', '.']","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 4, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: Noweho zakonja']
+286,"['Předsyda', 'je', 'Patrik', 'Köbele', '.']","[0, 0, 1, 2, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: Patrik Köbele']
+287,"['Arabsce', ""''Raha"", ""''"", 'الرها', ',', 'kurdsce', ""''Riha"", ""''"", ',', 'tež', 'jednory', ""'"", ""''"", 'Urfa', ""''"", ""'"", '.']","[3, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['ORG: Arabsce', 'ORG: kurdsce']"
+288,"['WEITERLEITUNG', 'Walerij', 'Jakowlewič', 'Brjusow']","[0, 1, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']",['PER: Walerij Jakowlewič Brjusow']
+289,"['WEITERLEITUNG', 'Michail', 'Afanasjewič', 'Bulgakow']","[0, 1, 2, 2]","['hsb', 'hsb', 'hsb', 'hsb']",['PER: Michail Afanasjewič Bulgakow']
+290,"[""'"", ""''"", 'Šumerlja', ""''"", ""'"", '(', ',', ')', 'je', 'město', 'w', 'Ruskej', 'federaciji', '.']","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 6, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Ruskej federaciji']
+291,"['Mužakow', '(', '3.952', ')']","[5, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb']",['LOC: Mužakow']
+292,"['WEITERLEITUNG', 'Brjazyna', '(', 'Błóta', ')']","[0, 5, 6, 6, 6]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Brjazyna ( Błóta )']
+293,"['Jabłučkojta', 'róža', '(', ""''Rosa"", 'villosa', ""''"", ')']","[5, 6, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Jabłučkojta róža']
+294,"['Dobrjoług-Góstkow', '(', ""''Doberlug-Kirchhain"", ""''"", ';', ')']","[5, 0, 0, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Dobrjoług-Góstkow']
+295,"['Tam', 'so', 'nětko', 'sylnišo', 'molerstwu', 'wěnuje', 'a', 'akwarele', 'z', 'wjesnymi', 'a', 'błótowskimi', 'motiwami', 'moluje', '.']","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['ORG: błótowskimi']
+296,"['Załožer', 'a', 'šefredaktor', 'je', 'Justin', 'Raimondo', '.']","[0, 0, 0, 0, 1, 2, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['PER: Justin Raimondo']
+297,"['Rostlina', 'je', 'w', 'Europje', 'rozšěrjena', '.']","[0, 0, 0, 5, 0, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']",['LOC: Europje']
+298,"[""'"", ""''"", 'Lebjedjań', ""''"", ""'"", '(', ')', 'je', 'město', 'w', 'europskim', 'dźělu', 'Ruskeje', 'federacije', '.']","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 5, 6, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['LOC: europskim', 'LOC: Ruskeje federacije']"
+299,"['Nadeńdźe', 'so', 'blisko', 'Błótow', 'a', 'něhdźe', '40', 'kilometrow', 'južnje', 'Berlina', '.']","[0, 0, 0, 3, 0, 0, 0, 0, 0, 5, 0]","['hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb', 'hsb']","['ORG: Błótow', 'LOC: Berlina']"
