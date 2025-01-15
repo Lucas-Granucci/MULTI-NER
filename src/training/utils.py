@@ -42,6 +42,7 @@ class TrainConfig:
         bert_learning_rate: float,
         lstm_learning_rate: float,
         crf_learning_rate: float,
+        patience: int,
         epochs: int,
         device: torch.device,
     ):
@@ -50,6 +51,7 @@ class TrainConfig:
         self.BERT_LEARNING_RATE = bert_learning_rate
         self.LSTM_LEARNING_RATE = lstm_learning_rate
         self.CRF_LEARNING_RATE = crf_learning_rate
+        self.PATIENCE = patience
         self.EPOCHS = epochs
         self.DEVICE = device
 
