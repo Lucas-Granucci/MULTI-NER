@@ -61,12 +61,10 @@ def setup_optimizer(model: torch.nn.Module, config: TrainConfig) -> optim.Optimi
     Setups up optimizer for different models with different learning rates for each part
     """
     param_groups = []
-    if hasattr(model, "bert") or hasattr(model, "roberta"):
+    if hasattr(model, "bert"):
         param_groups.append(
             {
-                "params": model.bert.parameters()
-                if hasattr(model, "bert")
-                else model.roberta.parameters(),
+                "params": model.bert.parameters(),
                 "lr": config.BERT_LEARNING_RATE,
             }
         )

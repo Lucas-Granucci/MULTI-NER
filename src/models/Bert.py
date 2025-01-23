@@ -44,10 +44,3 @@ class Bert(nn.Module):
         Decode the emissions to get the predicted tags
         """
         return emissions.argmax(dim=-1)
-
-    @staticmethod
-    def get_model_type() -> str:
-        """
-        Get the type of the model
-        """
-        return "bert"

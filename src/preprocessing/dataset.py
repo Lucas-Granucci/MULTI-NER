@@ -1,5 +1,5 @@
 import torch
-from transformers import BertTokenizerFast, XLMRobertaTokenizerFast
+from transformers import BertTokenizerFast
 from typing import List, Dict
 
 
@@ -8,35 +8,18 @@ class NERDataset:
     Dataset for named entity recognition
     """
 
-    def __init__(
-        self, texts: List[List[str]], tags: List[List[int]], tokenizer_type: str
-    ):
+    def __init__(self, texts: List[List[str]], tags: List[List[int]]):
         self.texts = texts
         self.tags = tags
 
-        self.tokenizer = self.setup_tokenizer(tokenizer_type)
+        self.tokenizer = BertTokenizerFast.from_pretrained(
+            "google-bert/bert-base-multilingual-cased", do_lower_case=True
+        )
 
         self.CLS = [101]
         self.SEP = [102]
         self.VALUE_TOKEN = [0]
         self.MAX_LEN = 256
-
-    def setup_tokenizer(
-        self, tokenizer_type: str
-    ) -> BertTokenizerFast | XLMRobertaTokenizerFast:
-        """
-        Get the appropiate tokenizer type for different model architectures
-        """
-        if tokenizer_type == "bert":
-            tokenizer = BertTokenizerFast.from_pretrained(
-                "google-bert/bert-base-multilingual-cased", do_lower_case=True
-            )
-        elif tokenizer_type == "roberta":
-            tokenizer = XLMRobertaTokenizerFast.from_pretrained(
-                "xlm-roberta-base",
-                do_lower_case=True,
-            )
-        return tokenizer
 
     def __len__(self):
         return len(self.texts)

@@ -37,7 +37,7 @@ python src/test_models.py
 The data for this project is stored in the `\data\raw` directory and are sources from the [WikiANN](https://huggingface.co/datasets/unimelb-nlp/wikiann) multi-lingual NER dataset.
 
 ## Model Architecture
-The model architectures being tested are Bert, Bert-Bilstm, Bert-Bilstm-Crf, XLMRoberta, XLMRoberta-Bilstm, and XLMRoberta-Bilstm-Crf. These models can be found in the `src/models` directory.
+The model architectures being tested are Bert, BertCrf, Bert-Bilstm, Bert-Bilstm-Crf. These models can be found in the `src/models` directory.
 
 ## Results
 The results of the experiments are documented in the `experiments/results/` directory. Key performance metrics include train and validation F1-scores.

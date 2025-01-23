@@ -1,11 +1,9 @@
 import json
 
 from models.Bert import Bert
+from models.BertCrf import BertCrf
 from models.BertBilstm import BertBilstm
 from models.BertBilstmCrf import BertBilstmCrf
-from models.XLMRoberta import XLMRoberta
-from models.XLMRobertaBilstm import XLMRobertaBilstm
-from models.XLMRobertaBilstmCrf import XLMRobertaBilstmCrf
 
 from training.cv_train import cv_train
 from training.train_configs import model_configs
@@ -25,11 +23,9 @@ languages = {
 # Define models
 models = {
     "BERT": Bert,
+    "BERT-CRF": BertCrf,
     "BERT-Bilstm": BertBilstm,
     "BERT-Bilstm-CRF": BertBilstmCrf,
-    "XLM-Roberta": XLMRoberta,
-    "XLM-Roberta-Bilstm": XLMRobertaBilstm,
-    "XLM-Roberta-Bilstm-CRF": XLMRobertaBilstmCrf,
 }
 
 model_performance = {}
@@ -41,9 +37,7 @@ for model_name, model_type in models.items():
 
         # Create NER dataset for language
         dataset = NERDataset(
-            texts=lang_df["tokens"].to_list(),
-            tags=lang_df["ner_tags"].to_list(),
-            tokenizer_type=model_type.get_model_type(),
+            texts=lang_df["tokens"].to_list(), tags=lang_df["ner_tags"].to_list()
         )
 
         # Train and evaluate model
@@ -62,6 +56,8 @@ for model_name, model_type in models.items():
             "train_f1": train_f1,
             "val_f1": val_f1,
         }
+
+        print(f"{model_name} on {language} -- Val F1: {val_f1}, Train F1: {train_f1}")
 
 # Save results to json
 with open("src/experiments/results/models_performance.json", "w") as outfile:
