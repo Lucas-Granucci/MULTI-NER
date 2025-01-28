@@ -3,42 +3,42 @@
         "family": "germanic",
         "low_resource_code": "fo",
         "low_resource_name": "Faroese",
-        "high_resource_code": "en",
-        "high_resource_name": "English"
+        "high_resource_code": "is",
+        "high_resource_name": "Icelandic"
     },
     {
         "family": "romance",
         "low_resource_code": "co",
         "low_resource_name": "Corsican",
-        "high_resource_code": "",
-        "high_resource_name": ""
+        "high_resource_code": "it",
+        "high_resource_name": "Italian"
     },
     {
         "family": "slavic",
         "low_resource_code": "hsb",
         "low_resource_name": "Upper Sorbian",
-        "high_resource_code": "",
-        "high_resource_name": ""
+        "high_resource_code": "pl",
+        "high_resource_name": "Polish"
     },
     {
         "family": "south-asian-indic",
         "low_resource_code": "bh",
         "low_resource_name": "Bhojpuri",
-        "high_resource_code": "",
-        "high_resource_name": ""
+        "high_resource_code": "hi",
+        "high_resource_name": "Hindi"
     },
     {
         "family": "turkic",
         "low_resource_code": "cv",
         "low_resource_name": "Chuvash",
-        "high_resource_code": "",
-        "high_resource_name": ""
+        "high_resource_code": "tt",
+        "high_resource_name": "Tatar"
     },
     {
         "family": "austronesian",
         "low_resource_code": "mg",
         "low_resource_name": "Malagasy",
-        "high_resource_code": "",
-        "high_resource_name": ""
+        "high_resource_code": "id",
+        "high_resource_name": "Indonesian"
     }
 ]
