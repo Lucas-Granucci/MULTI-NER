@@ -47,4 +47,4 @@ def get_wikiann_dataset(lang_code: str) -> DefaultDict:
     return lang_dataset
 
 
-load_language_data(language_json_dir="data/languages.json", data_dir="data/raw")
+load_language_data(language_json_dir="data/languages.json", data_dir="data/labeled")

@@ -1,6 +1,7 @@
 import torch
-import pandas as pd
 from tqdm import tqdm
+import pandas as pd
+import numpy as np
 from sklearn.model_selection import KFold
 
 from training.utils import TrainConfig, setup_optimizer
@@ -10,29 +11,49 @@ from preprocessing.dataset import NERDataset
 from typing import Tuple
 
 
-def cv_train(
-    Model, dataframe: pd.DataFrame, k_splits: int, config: TrainConfig
+def cv_transfer_train(
+    Model,
+    low_resource_dataframe: pd.DataFrame,
+    high_resource_dataframe: pd.DataFrame,
+    k_splits: int,
+    config: TrainConfig,
 ) -> Tuple[float, float]:
     """
     Train model on cross-validation splits and return results
     """
 
-    # Create NER dataset for language
-    dataset = NERDataset(
-        texts=dataframe["tokens"].to_list(), tags=dataframe["ner_tags"].to_list()
+    # Create NER dataset for low-resource language
+    low_resource_dataset = NERDataset(
+        texts=low_resource_dataframe["tokens"].to_list(),
+        tags=low_resource_dataframe["ner_tags"].to_list(),
     )
 
     # Prepare Kfold
     kf = KFold(n_splits=k_splits, shuffle=True, random_state=42)
+    # Precompute splits for the low-resource dataset
+    splits = list(kf.split(low_resource_dataset))
 
     train_f1_score_ = 0
     val_f1_score_ = 0
 
     # Iterate over folds in dataset
-    for train_idx, test_idx in tqdm((kf.split(dataset)), desc="Fold: "):
+    for train_idx, test_idx in tqdm(splits, desc="Fold: "):
+        # Modify train_idx to include added transfer learning data
+        added_indices = np.arange(
+            len(low_resource_dataset),
+            len(low_resource_dataset) + len(high_resource_dataframe),
+        )
+        train_idx = np.append(train_idx, added_indices)
+
+        # Add transfer learning data
+        low_resource_dataset.add_texts(
+            new_texts=high_resource_dataframe["tokens"].to_list(),
+            new_tags=high_resource_dataframe["ner_tags"].to_list(),
+        )
+
         # Setup dataloaders with fold train/test split
         train_dataloader, test_dataloader = create_dataloaders(
-            dataset=dataset,
+            dataset=low_resource_dataset,
             batch_size=config.BATCH_SIZE,
             train_idx=train_idx,
             test_idx=test_idx,

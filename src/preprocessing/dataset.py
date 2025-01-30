@@ -21,6 +21,10 @@ class NERDataset:
         self.VALUE_TOKEN = [0]
         self.MAX_LEN = 256
 
+    def add_texts(self, new_texts: List[List[str]], new_tags: List[List[int]]):
+        self.texts.extend(new_texts)
+        self.tags.extend(new_tags)
+
     def __len__(self):
         return len(self.texts)
 

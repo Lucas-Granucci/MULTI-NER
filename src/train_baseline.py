@@ -7,12 +7,12 @@ from models.BertCrf import BertCrf
 
 # Define languages
 languages = {
-    "fo": load_data("data/raw/fo_data.csv"),
-    "co": load_data("data/raw/co_data.csv"),
-    "hsb": load_data("data/raw/hsb_data.csv"),
-    "bh": load_data("data/raw/bh_data.csv"),
-    "cv": load_data("data/raw/cv_data.csv"),
-    "mg": load_data("data/raw/mg_data.csv"),
+    "fo": load_data("data/labeled/fo_data.csv"),
+    "co": load_data("data/labeled/co_data.csv"),
+    "hsb": load_data("data/labeled/hsb_data.csv"),
+    "bh": load_data("data/labeled/bh_data.csv"),
+    "cv": load_data("data/labeled/cv_data.csv"),
+    "mg": load_data("data/labeled/mg_data.csv"),
 }
 
 # Define model
@@ -23,17 +23,12 @@ baseline_model_performance = {}
 
 # Iterate over languages
 for language, lang_df in languages.items():
-    print(f"Testing: {model_name} on language: {language}")
-
-    # Create NER dataset for language
-    dataset = NERDataset(
-        texts=lang_df["tokens"].to_list(), tags=lang_df["ner_tags"].to_list()
-    )
+    print(f"Testing: {model_name} on language: '{language}'")
 
     # Train and evaluate model
     val_f1, train_f1 = cv_train(
         Model=baseline_model,
-        dataset=dataset,
+        dataframe=lang_df,
         k_splits=5,
         config=model_configs[model_name],
     )
