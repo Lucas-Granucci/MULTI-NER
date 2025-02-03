@@ -5,17 +5,27 @@ from preprocessing.dataloader import load_data
 from models.BertCrf import BertCrf
 
 LOW_RESOURCE_COUNT = 300
-AUGUMENTATION_FACTOR = 1
+AUGUMENTATION_FACTOR = 10
 
 HIGH_RESOURCE_COUNT = LOW_RESOURCE_COUNT * AUGUMENTATION_FACTOR
 
 # Define languages
 low_resource_languages = {
     "fo": load_data("data/labeled/fo_data.csv").head(LOW_RESOURCE_COUNT),
+    "co": load_data("data/labeled/co_data.csv").head(LOW_RESOURCE_COUNT),
+    "hsb": load_data("data/labeled/hsb_data.csv").head(LOW_RESOURCE_COUNT),
+    "bh": load_data("data/labeled/bh_data.csv").head(LOW_RESOURCE_COUNT),
+    "cv": load_data("data/labeled/cv_data.csv").head(LOW_RESOURCE_COUNT),
+    "mg": load_data("data/labeled/mg_data.csv").head(LOW_RESOURCE_COUNT),
 }
 
 high_resource_languages = {
-    "is": load_data("data/labeled/is_data.csv").head(HIGH_RESOURCE_COUNT)
+    "is": load_data("data/labeled/is_data.csv").head(HIGH_RESOURCE_COUNT),
+    "it": load_data("data/labeled/it_data.csv").head(HIGH_RESOURCE_COUNT),
+    "pl": load_data("data/labeled/pl_data.csv").head(HIGH_RESOURCE_COUNT),
+    "hi": load_data("data/labeled/hi_data.csv").head(HIGH_RESOURCE_COUNT),
+    "tt": load_data("data/labeled/tt_data.csv").head(HIGH_RESOURCE_COUNT),
+    "id": load_data("data/labeled/id_data.csv").head(HIGH_RESOURCE_COUNT),
 }
 
 # Define model
@@ -56,5 +66,5 @@ for low_resource_batch, high_resource_batch in zip(
     )
 
 # Save results to json
-with open("src/experiments/results/transfer_learning_performance.json", "w") as outfile:
+with open(f"src/experiments/results/transfer_learning_performance{AUGUMENTATION_FACTOR}.json", "w") as outfile:
     json.dump(transfer_learning_performance, outfile)
