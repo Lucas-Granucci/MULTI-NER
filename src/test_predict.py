@@ -1,5 +1,5 @@
 import torch
-from training.predict import predict_unlabeled
+from training.pseudo_labeling import predict_unlabeled
 from training.train_configs import model_configs
 from preprocessing.dataloader import load_data, load_unlabeled_datat
 from models.BertCrf import BertCrf
@@ -26,15 +26,19 @@ unlabeled_texts = {
 
 baseline_model_performance = {}
 
-# Define model
-model_name = "BERT-CRF"
-pretrained_model = BertCrf(num_tags=model_configs[model_name].NUM_TAGS)
+# Define teacher model
+teacher_model_name = "BERT-CRF"
+teacher_model = BertCrf(num_tags=model_configs[teacher_model_name].NUM_TAGS)
 
-pretrained_model.load_state_dict(
+teacher_model.load_state_dict(
     torch.load("fo_baseline_pretrained.pth", weights_only=True)
 )
 
+# Define student model
+student_model_name = "BERT-CRF"
+student_model = BertCrf(num_tags=model_configs[student_model_name].NUM_TAGS)
+
 # Just testing
 pred_tags = predict_unlabeled(
-    pretrained_model, unlabeled_texts["fo"], 32, torch.device("cuda")
+    teacher_model, student_model, unlabeled_texts["fo"], 32, torch.device("cuda")
 )
