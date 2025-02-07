@@ -8,7 +8,6 @@ from models.BertBilstmCrf import BertBilstmCrf
 from training.cv_train import cv_train
 from training.train_configs import model_configs
 from preprocessing.dataloader import load_data
-from preprocessing.dataset import NERDataset
 
 # Define languages
 languages = {
@@ -55,5 +54,7 @@ for model_name, model_type in models.items():
         print(f"{model_name} on {language} -- Val F1: {val_f1}, Train F1: {train_f1}")
 
 # Save results to json
-with open("src/experiments/results/models_performance.json", "w") as outfile:
+with open(
+    "src/experiments/results/objective_II/models_performance.json", "w"
+) as outfile:
     json.dump(model_performance, outfile)

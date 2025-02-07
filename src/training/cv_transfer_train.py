@@ -17,10 +17,13 @@ def cv_transfer_train(
     high_resource_dataframe: pd.DataFrame,
     k_splits: int,
     config: TrainConfig,
+    verbose: bool = False,
 ) -> Tuple[float, float]:
     """
     Train model on cross-validation splits and return results
     """
+
+    logging_results = {}
 
     # Create NER dataset for low-resource language
     low_resource_dataset = NERDataset(
@@ -35,6 +38,11 @@ def cv_transfer_train(
 
     train_f1_score_ = 0
     val_f1_score_ = 0
+
+    # Set up logging
+    if verbose:
+        train_losses, val_losses = [], []
+        train_f1s, val_f1s = [], []
 
     # Iterate over folds in dataset
     for train_idx, test_idx in tqdm(splits, desc="Fold: "):
@@ -79,14 +87,19 @@ def cv_transfer_train(
         # Implement early stopping
         patience = config.PATIENCE
 
+        # Set up fold-level logging
+        if verbose:
+            fold_train_losses, fold_val_losses = [], []
+            fold_train_f1s, fold_val_f1s = [], []
+
         # Train and evaluate model
         for _ in range(config.EPOCHS):
             # Train loop
-            _, train_f1 = train_fn(
+            train_loss, train_f1 = train_fn(
                 train_dataloader, model, optimizer, scheduler, config.DEVICE
             )
             # Evaluate loop
-            _, val_f1 = evaluate_fn(test_dataloader, model, config.DEVICE)
+            val_loss, val_f1 = evaluate_fn(test_dataloader, model, config.DEVICE)
 
             # Store best f1
             if val_f1 > best_val_f1:
@@ -102,9 +115,29 @@ def cv_transfer_train(
             if patience == 0:
                 break
 
+            # Fold-level logging
+            if verbose:
+                fold_train_losses.append(train_loss)
+                fold_val_losses.append(val_loss)
+                fold_train_f1s.append(train_f1)
+                fold_val_f1s.append(val_f1)
+
         # Save best F1 from fold
         val_f1_score_ += best_val_f1
         train_f1_score_ += best_train_f1
 
+        # Global level logging
+        if verbose:
+            train_losses.append(fold_train_losses)
+            val_losses.append(fold_val_losses)
+            train_f1s.append(fold_train_f1s)
+            val_f1s.append(fold_val_f1s)
+
+    if verbose:
+        logging_results["train_losses"] = train_losses
+        logging_results["val_losses"] = val_losses
+        logging_results["train_f1s"] = train_f1s
+        logging_results["val_f1s"] = val_f1s
+
     # Return average F1 scores across folds
-    return val_f1_score_ / k_splits, train_f1_score_ / k_splits
+    return val_f1_score_ / k_splits, train_f1_score_ / k_splits, logging_results

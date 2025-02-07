@@ -5,7 +5,7 @@ from preprocessing.dataloader import load_data
 from models.BertCrf import BertCrf
 
 LOW_RESOURCE_COUNT = 300
-AUGUMENTATION_FACTOR = 10
+AUGUMENTATION_FACTOR = 3
 
 HIGH_RESOURCE_COUNT = LOW_RESOURCE_COUNT * AUGUMENTATION_FACTOR
 
@@ -47,7 +47,7 @@ for low_resource_batch, high_resource_batch in zip(
     )
 
     # Train and evaluate model
-    val_f1, train_f1 = cv_transfer_train(
+    val_f1, train_f1, _ = cv_transfer_train(
         Model=baseline_model,
         low_resource_dataframe=low_resource_lang_df,
         high_resource_dataframe=high_resource_lang_df,
@@ -66,5 +66,8 @@ for low_resource_batch, high_resource_batch in zip(
     )
 
 # Save results to json
-with open(f"src/experiments/results/transfer_learning_performance{AUGUMENTATION_FACTOR}.json", "w") as outfile:
+with open(
+    f"src/experiments/results/objective_IV/transfer_learning_performance{AUGUMENTATION_FACTOR}.json",
+    "w",
+) as outfile:
     json.dump(transfer_learning_performance, outfile)

@@ -21,6 +21,21 @@ def load_data(data_dir: str) -> pd.DataFrame:
     return data
 
 
+def load_unlabeled_datat(data_dir: str) -> pd.DataFrame:
+    """
+    Load unlabeled data from txt files into dataframe
+    """
+    with open(data_dir, "r") as file:
+        sentences = file.readlines()
+
+    def convert_to_tokens_list(sentence: str) -> list:
+        return sentence.split(" ")
+
+    data = pd.DataFrame({"sentences": sentences})
+    data["sentences"] = data["sentences"].apply(convert_to_tokens_list)
+    return data
+
+
 def create_dataloaders(
     dataset: NERDataset, batch_size: int, train_idx: list, test_idx: list
 ) -> Tuple[DataLoader, DataLoader]:

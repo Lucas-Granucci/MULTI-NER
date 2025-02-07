@@ -70,3 +70,58 @@ class NERDataset:
             "token_type_ids": torch.tensor(token_type_ids, dtype=torch.long),
             "target_tags": torch.tensor(target_tags, dtype=torch.long),
         }
+
+
+class U_NERDataset:
+    """
+    Unlabeled dataset for named entity recognition
+    """
+
+    def __init__(self, texts: List[List[str]]):
+        self.texts = texts
+
+        self.tokenizer = BertTokenizerFast.from_pretrained(
+            "google-bert/bert-base-multilingual-cased", do_lower_case=True
+        )
+
+        self.CLS = [101]
+        self.SEP = [102]
+        self.VALUE_TOKEN = [0]
+        self.MAX_LEN = 256
+
+    def __len__(self):
+        return len(self.texts)
+
+    def __getitem__(self, index: int) -> Dict[str, torch.Tensor]:
+        """
+        Gets items and preprocesses it for training
+        """
+        texts = self.texts[index]
+
+        # Tokenize
+        ids = []
+
+        for word in texts:
+            inputs = self.tokenizer.encode(word, add_special_tokens=False)
+            ids.extend(inputs)
+
+        # Resize for special tokens
+        ids = ids[: self.MAX_LEN - 2]
+
+        # Add special tokens
+        ids = self.CLS + ids + self.SEP
+
+        mask = [1] * len(ids)
+        token_type_ids = [0] * len(ids)
+
+        # Add padding if the input_len is small
+        padding_len = self.MAX_LEN - len(ids)
+        ids = ids + ([0] * padding_len)
+        mask = mask + ([0] * padding_len)
+        token_type_ids = token_type_ids + ([0] * padding_len)
+
+        return {
+            "ids": torch.tensor(ids, dtype=torch.long),
+            "mask": torch.tensor(mask, dtype=torch.long),
+            "token_type_ids": torch.tensor(token_type_ids, dtype=torch.long),
+        }
