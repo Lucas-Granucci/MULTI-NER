@@ -1,5 +1,12 @@
 [
     {
+        "family": "austronesian",
+        "low_resource_code": "mg",
+        "low_resource_name": "Malagasy",
+        "high_resource_code": "id",
+        "high_resource_name": "Indonesian"
+    },
+    {
         "family": "germanic",
         "low_resource_code": "fo",
         "low_resource_name": "Faroese",
@@ -33,12 +40,5 @@
         "low_resource_name": "Chuvash",
         "high_resource_code": "tt",
         "high_resource_name": "Tatar"
-    },
-    {
-        "family": "austronesian",
-        "low_resource_code": "mg",
-        "low_resource_name": "Malagasy",
-        "high_resource_code": "id",
-        "high_resource_name": "Indonesian"
     }
 ]

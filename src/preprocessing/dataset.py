@@ -8,7 +8,11 @@ class NERDataset:
     Dataset for named entity recognition
     """
 
-    def __init__(self, texts: List[List[str]], tags: List[List[int]]):
+    def __init__(
+        self,
+        texts: List[List[str]],
+        tags: List[List[int]],
+    ):
         self.texts = texts
         self.tags = tags
 
@@ -19,7 +23,7 @@ class NERDataset:
         self.CLS = [101]
         self.SEP = [102]
         self.VALUE_TOKEN = [0]
-        self.MAX_LEN = 256
+        self.MAX_LEN = 128
 
     def add_texts(self, new_texts: List[List[str]], new_tags: List[List[int]]):
         self.texts.extend(new_texts)
@@ -32,14 +36,14 @@ class NERDataset:
         """
         Gets items and preprocesses it for training
         """
-        texts = self.texts[index]
+        text = self.texts[index]
         tags = self.tags[index]
 
         # Tokenize
         ids = []
         target_tag = []
 
-        for i, word in enumerate(texts):
+        for i, word in enumerate(text):
             inputs = self.tokenizer.encode(word, add_special_tokens=False)
 
             input_len = len(inputs)
@@ -87,7 +91,7 @@ class U_NERDataset:
         self.CLS = [101]
         self.SEP = [102]
         self.VALUE_TOKEN = [0]
-        self.MAX_LEN = 256
+        self.MAX_LEN = 128
 
     def __len__(self):
         return len(self.texts)
@@ -96,12 +100,13 @@ class U_NERDataset:
         """
         Gets items and preprocesses it for training
         """
-        texts = self.texts[index]
+        text = self.texts[index]
+        word_count = len(text)
 
         # Tokenize
         ids = []
 
-        for word in texts:
+        for word in text:
             inputs = self.tokenizer.encode(word, add_special_tokens=False)
             ids.extend(inputs)
 
@@ -120,8 +125,14 @@ class U_NERDataset:
         mask = mask + ([0] * padding_len)
         token_type_ids = token_type_ids + ([0] * padding_len)
 
+        # Fake target tags
+        target_tags = [0] * len(token_type_ids)
+
         return {
             "ids": torch.tensor(ids, dtype=torch.long),
             "mask": torch.tensor(mask, dtype=torch.long),
+            "target_tags": torch.tensor(target_tags, dtype=torch.long),
             "token_type_ids": torch.tensor(token_type_ids, dtype=torch.long),
+            "sentence_length": word_count,
+            "sentence": " ".join(text),
         }

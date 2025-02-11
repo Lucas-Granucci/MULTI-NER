@@ -21,11 +21,11 @@ def load_data(data_dir: str) -> pd.DataFrame:
     return data
 
 
-def load_unlabeled_datat(data_dir: str) -> pd.DataFrame:
+def load_unlabeled_data(data_dir: str) -> pd.DataFrame:
     """
     Load unlabeled data from txt files into dataframe
     """
-    with open(data_dir, "r") as file:
+    with open(data_dir, "r", encoding="utf8") as file:
         sentences = file.readlines()
 
     def convert_to_tokens_list(sentence: str) -> list:
@@ -34,24 +34,3 @@ def load_unlabeled_datat(data_dir: str) -> pd.DataFrame:
     data = pd.DataFrame({"sentences": sentences})
     data["sentences"] = data["sentences"].apply(convert_to_tokens_list)
     return data
-
-
-def create_dataloaders(
-    dataset: NERDataset, batch_size: int, train_idx: list, test_idx: list
-) -> Tuple[DataLoader, DataLoader]:
-    """
-    Create dataloaders with idx's from cross-validation split
-    """
-    train_dataloader = DataLoader(
-        dataset,
-        batch_size=batch_size,
-        sampler=torch.utils.data.SubsetRandomSampler(train_idx),
-    )
-
-    test_dataloader = DataLoader(
-        dataset,
-        batch_size=batch_size,
-        sampler=torch.utils.data.SubsetRandomSampler(test_idx),
-    )
-
-    return train_dataloader, test_dataloader
