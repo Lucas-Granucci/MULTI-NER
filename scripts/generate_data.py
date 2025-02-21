@@ -1,7 +1,6 @@
 import os
 import ast
 from tqdm import tqdm
-import json
 import pandas as pd
 from openai import OpenAI
 

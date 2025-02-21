@@ -1,11 +1,109 @@
 import torch
+from tqdm import tqdm
 import torch.optim as optim
 import pandas as pd
 from sklearn.metrics import f1_score
+from torch.optim import Optimizer
 from preprocessing.dataset import NERDataset
-from torch.utils.data import DataLoader, WeightedRandomSampler
+from torch.utils.data import DataLoader
 
-from typing import List
+from typing import List, Tuple
+
+def train_model(model, config, train_loader, val_loader, save_model):
+
+    # Setup optimizer and learning rate scheduler
+    optimizer = setup_optimizer(model, config)
+    scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode="min", factor=0.1, patience=5)
+
+    best_val_f1 = -float("inf")  # Track best validation F1-score
+    patience_counter = config.patience  # Early stopping counter
+
+    # Train model over epochs
+    pbar = tqdm(total=config.epochs, desc="Train F1: 0.0    Val F1: 0.0", leave=False)
+    for _ in range(config.epochs):
+        # Train single epoch
+        train_loss, train_f1 = train_epoch(
+            train_loader, model, optimizer, config.device
+        )
+        # Get validation scores for single epoch
+        val_loss, val_f1 = evaluate_epoch(val_loader, model, config.device)
+
+        # Reduce learning rate
+        scheduler.step(val_loss)
+
+        # Save best model
+        if val_f1 > best_val_f1:
+            best_val_f1 = val_f1
+            patience_counter = config.patience  # Reset patience counter
+            torch.save(model.state_dict(), save_model)
+        else:
+            patience_counter -= 1
+
+        if patience_counter == 0:
+            break  # Stop training if model doesn't improve
+
+        # Update progress bar
+        pbar.set_description(f"Train F1: {train_f1:.4f}    Val F1: {val_f1:.4f}")
+        pbar.update()
+
+    return best_val_f1
+
+def train_epoch(
+    dataloader: DataLoader,
+    model: torch.nn.Module,
+    optimizer: Optimizer,
+    device: torch.device,
+) -> Tuple[float, float]:
+    """
+    Train model for sequence tagging ; return loss and F1 score
+    """
+    model.train()
+    total_loss, total_f1 = 0, 0
+
+    for batch in dataloader:
+        # Move data to device
+        batch = {key: value.to(device) for key, value in batch.items()}
+
+        # Backward propagation
+        optimizer.zero_grad()
+        emissions, loss = model(**batch)
+        loss.backward()
+        optimizer.step()
+        total_loss += loss.item()
+
+        # Decode and get F1 score
+        pred_tags = model.decode(emissions, batch["mask"])
+        f1_score = calculate_f1_score(batch["target_tags"], pred_tags, batch["mask"])
+
+        total_f1 += f1_score
+
+    # Return average loss and F1-score
+    return total_loss / len(dataloader), total_f1 / len(dataloader)
+
+
+def evaluate_epoch(
+    dataloader: DataLoader, model: torch.nn.Module, device: torch.device
+) -> Tuple[float, float]:
+    """
+    Evaluate model for sequence tagging ; return loss and F1-score
+    """
+    model.eval()
+    total_loss, total_f1 = 0, 0
+
+    for batch in dataloader:
+        batch = {key: value.to(device) for key, value in batch.items()}
+
+        emissions, loss = model(**batch)
+        total_loss += loss.item()
+
+        # Decode predictions and calculate F1-score
+        pred_tags = model.decode(emissions, batch["mask"])
+        f1_score = calculate_f1_score(batch["target_tags"], pred_tags, batch["mask"])
+        total_f1 += f1_score
+
+    # Return average loss and F1-score
+    return total_loss / len(dataloader), total_f1 / len(dataloader)
+
 
 
 def create_dataloaders(
@@ -17,71 +115,16 @@ def create_dataloaders(
     val_dataset = NERDataset(
         texts=val_df["tokens"].to_list(), tags=val_df["ner_tags"].to_list()
     )
-    test_dataset = NERDataset(
-        texts=test_df["tokens"].to_list(), tags=test_df["ner_tags"].to_list()
-    )
 
     train_dataloader = DataLoader(train_dataset, batch_size=batch_size)
     val_dataloader = DataLoader(val_dataset, batch_size=batch_size)
-    test_dataloader = DataLoader(test_dataset, batch_size=batch_size)
 
-    return train_dataloader, val_dataloader, test_dataloader
-
-
-def create_weighted_dataloaders(
-    low_resource_train_df, high_resource_df, val_df, test_df, batch_size: int
-):
-    # Assign  weighting to low and high resource datasets
-    low_resource_train_dataset = NERDataset(
-        texts=low_resource_train_df["tokens"].to_list(),
-        tags=low_resource_train_df["ner_tags"].to_list(),
-    )
-    high_resource_train_dataset = NERDataset(
-        texts=high_resource_df["tokens"].to_list(),
-        tags=high_resource_df["ner_tags"].to_list(),
-    )
-
-    # Combine datasets
-    combined_texts = (
-        low_resource_train_dataset.texts + high_resource_train_dataset.texts
-    )
-    combined_tags = low_resource_train_dataset.tags + high_resource_train_dataset.tags
-    combined_dataset = NERDataset(combined_texts, combined_tags)
-
-    # Assign weights inversely proportional to dataset size
-    num_low = len(low_resource_train_dataset)
-    num_high = len(high_resource_train_dataset)
-    total_samples = num_low + num_high
-
-    weights_low = [
-        num_high / total_samples
-    ] * num_low  # Higher weight for low-resource samples
-    weights_high = [
-        num_low / total_samples
-    ] * num_high  # Lower weight for high-resource samples
-    all_weights = weights_low + weights_high
-
-    # Create weighted sampler
-    sampler = WeightedRandomSampler(
-        weights=all_weights, num_samples=total_samples, replacement=True
-    )
-
-    # Create dataloader
-    train_dataloader = DataLoader(
-        combined_dataset,
-        batch_size=batch_size,
-        sampler=sampler,
-    )
-
-    val_dataset = NERDataset(
-        texts=val_df["tokens"].to_list(), tags=val_df["ner_tags"].to_list()
-    )
-    test_dataset = NERDataset(
-        texts=test_df["tokens"].to_list(), tags=test_df["ner_tags"].to_list()
-    )
-    val_dataloader = DataLoader(val_dataset, batch_size=batch_size)
-    test_dataloader = DataLoader(test_dataset, batch_size=batch_size)
-    return train_dataloader, val_dataloader, test_dataloader
+    if test_df is not None:
+        test_dataset = NERDataset(texts=test_df["tokens"].to_list(), tags=test_df["ner_tags"].to_list())
+        test_dataloader = DataLoader(test_dataset, batch_size=batch_size)
+        return train_dataloader, val_dataloader, test_dataloader
+    
+    return train_dataloader, val_dataloader
 
 
 def calculate_f1_score(
@@ -94,7 +137,7 @@ def calculate_f1_score(
     """
     # Handle CRF return type (list)
     if type(pred_tags) is list:
-        pred_tags = [sequence + [0] * (128 - len(sequence)) for sequence in pred_tags]
+        pred_tags = [sequence + [0] * (101 - len(sequence)) for sequence in pred_tags]
         pred_tags = torch.tensor(pred_tags).to(target_tags.get_device())
 
     # Flatten batch results
@@ -110,33 +153,7 @@ def calculate_f1_score(
     return f1_micro
 
 
-class TrainConfig:
-    """
-    Training configuration class
-    """
-
-    def __init__(
-        self,
-        num_tags: int,
-        batch_size: int,
-        bert_learning_rate: float,
-        lstm_learning_rate: float,
-        crf_learning_rate: float,
-        patience: int,
-        epochs: int,
-        device: torch.device,
-    ):
-        self.NUM_TAGS = num_tags
-        self.BATCH_SIZE = batch_size
-        self.BERT_LEARNING_RATE = bert_learning_rate
-        self.LSTM_LEARNING_RATE = lstm_learning_rate
-        self.CRF_LEARNING_RATE = crf_learning_rate
-        self.PATIENCE = patience
-        self.EPOCHS = epochs
-        self.DEVICE = device
-
-
-def setup_optimizer(model: torch.nn.Module, config: TrainConfig) -> optim.Optimizer:
+def setup_optimizer(model: torch.nn.Module, config) -> optim.Optimizer:
     """
     Setups up optimizer for different models with different learning rates for each part
     """
@@ -145,7 +162,7 @@ def setup_optimizer(model: torch.nn.Module, config: TrainConfig) -> optim.Optimi
         param_groups.append(
             {
                 "params": model.bert.parameters(),
-                "lr": config.BERT_LEARNING_RATE,
+                "lr": config.bert_learning_rate,
             }
         )
 
@@ -153,7 +170,7 @@ def setup_optimizer(model: torch.nn.Module, config: TrainConfig) -> optim.Optimi
         param_groups.append(
             {
                 "params": model.lstm.parameters(),
-                "lr": config.LSTM_LEARNING_RATE,
+                "lr": config.lstm_learning_rate,
             }
         )
 
@@ -161,7 +178,7 @@ def setup_optimizer(model: torch.nn.Module, config: TrainConfig) -> optim.Optimi
         param_groups.append(
             {
                 "params": model.crf.parameters(),
-                "lr": config.CRF_LEARNING_RATE,
+                "lr": config.crf_learning_rate,
             }
         )
 

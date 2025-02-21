@@ -23,7 +23,7 @@ class NERDataset:
         self.CLS = [101]
         self.SEP = [102]
         self.VALUE_TOKEN = [0]
-        self.MAX_LEN = 128
+        self.MAX_LEN = 101
 
     def add_texts(self, new_texts: List[List[str]], new_tags: List[List[int]]):
         self.texts.extend(new_texts)
@@ -44,10 +44,13 @@ class NERDataset:
         target_tag = []
 
         for i, word in enumerate(text):
+            if i >= len(tags):
+                break
             inputs = self.tokenizer.encode(word, add_special_tokens=False)
 
             input_len = len(inputs)
             ids.extend(inputs)
+            
             target_tag.extend(input_len * [tags[i]])
 
         # Resize for special tokens
@@ -91,7 +94,7 @@ class U_NERDataset:
         self.CLS = [101]
         self.SEP = [102]
         self.VALUE_TOKEN = [0]
-        self.MAX_LEN = 128
+        self.MAX_LEN = 101
 
     def __len__(self):
         return len(self.texts)

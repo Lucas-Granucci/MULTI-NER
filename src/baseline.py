@@ -1,16 +1,15 @@
 import json
-import pandas as pd
 import torch
-from tqdm import tqdm
 from typing import Tuple, Dict, Any
 
 from utils import set_seed
 from config import ExperimentConfig
 from models.BertBilstmCrf import BertBilstmCrf
-from training.train_methods.pseudo_labeling import pseudo_labeling_train
+from training.train_methods.train_evaluate import train_evaluate
 from preprocessing.dataloader import LanguageDataManager
 
-pseudo_labeling_config = ExperimentConfig(
+
+train_config = ExperimentConfig(
     # ------- Train params ------- #
     num_tags=7,
     batch_size=48,
@@ -24,13 +23,13 @@ pseudo_labeling_config = ExperimentConfig(
     # ------- Other params ------- #
     seed=42,
     low_resource_base_count=240,  # 300 * 0.8
-    results_dir="src/experiments/results/objective_IV",
+    results_dir="src/experiments/results/objective_III",
     model_dir="src/models/pretrained",
-    logging_dir="src/experiments/logging/objective_IV",
+    logging_dir="src/experiments/logging/objective_III",
 )
 
 
-class PseudoLabelingExperiment:
+class BaselineExperiment:
     def __init__(self, config: ExperimentConfig):
         self.config = config
         self.data_manager = LanguageDataManager()
@@ -44,32 +43,18 @@ class PseudoLabelingExperiment:
         results = {}
 
         for lang, lang_df in language_data.items():
-            model_path = f"{self.config.model_dir}/{lang}_pseudo_pretrained.pth"
-            pseudo_path = f"{self.config.model_dir}/{lang}_temp_pseudo.pth"
+            model_path = f"{self.config.model_dir}/{lang}_baseline_pretrained.pth"
 
-            teacher_model = BertBilstmCrf(num_tags=self.config.num_tags)
-            teacher_model.load_state_dict(
-                torch.load(
-                    f"{self.config.model_dir}/{lang}_baseline_pretrained.pth",
-                    weights_only=True,
-                )
-            )
-
-            pseudo_df = self.data_manager.load_data(f"data/pseudo_labels/{lang}_pseudo_labels.csv")
-
-            # Train and evaluate model with pseudo-labeling
-            train_f1, test_f1 = pseudo_labeling_train(
-                teacher_model,
-                BertBilstmCrf,
-                pseudo_df,
-                lang_df,
-                save_model=model_path,
-                save_pseudo_model=pseudo_path,
+            # Train and evaluate model
+            train_f1, test_f1 = train_evaluate(
+                model_class=BertBilstmCrf,
+                dataframe=lang_df,
                 config=self.config,
+                save_model=model_path
             )
 
             print(
-                f"Pseudo-labeling model on {lang}:    Train F1: {train_f1:.4f}    Test F1: {test_f1:.4f}"
+                f"Baseline model on {lang}:    Train F1: {train_f1:.4f}    Test F1: {test_f1:.4f}"
             )
 
             results[lang] = {"train_f1": train_f1, "test_f1": test_f1}
@@ -78,19 +63,17 @@ class PseudoLabelingExperiment:
 
 
 def main():
-    experiment = PseudoLabelingExperiment(pseudo_labeling_config)
+    config = train_config
+    experiment = BaselineExperiment(config)
 
-    set_seed(pseudo_labeling_config.seed)
+    set_seed(config.seed)
 
-    
     results = experiment.run_experiment()
 
     # Save results
-    output_path = f"{pseudo_labeling_config.results_dir}/3pseudo_labeling_model_performance.json"
+    output_path = f"{config.results_dir}/baseline_model_performance.json"
     with open(output_path, "w") as outfile:
         json.dump(results, outfile)
-
-
 
 if __name__ == "__main__":
     main()
