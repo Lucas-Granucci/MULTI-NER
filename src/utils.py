@@ -4,7 +4,6 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-
 def train_val_test_split(
     data: pd.DataFrame,
     train_size: float = 0.8,
@@ -12,18 +11,27 @@ def train_val_test_split(
     test_size: float = 0.1,
     random_state: int = 42,
 ):
-    train_df, temp_df = train_test_split(
+    """
+    Split data into train, validation, and test sets.
+    """
+    # Split data into training and temporary sets
+    train_data, temp_data = train_test_split(
         data, test_size=(1 - train_size), random_state=random_state
     )
-    val_df, test_df = train_test_split(
-        temp_df,
+    
+    # Split temporary set into validation and test sets
+    val_data, test_data = train_test_split(
+        temp_data,
         test_size=(test_size / (val_size + test_size)),
         random_state=random_state,
     )
-    return train_df, val_df, test_df
+    
+    return train_data, val_data, test_data
 
-
-def set_seed(seed):
+def set_seed(seed: int):
+    """
+    Set the random seed for reproducibility.
+    """
     torch.manual_seed(seed)
     if torch.cuda.is_available():
         torch.cuda.manual_seed(seed)

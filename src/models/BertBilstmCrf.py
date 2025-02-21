@@ -10,38 +10,49 @@ class BertBilstmCrf(nn.Module):
     BERT model with BiLSTM and CRF for sequence tagging
     """
 
-    def __init__(self, num_tags):
+    def __init__(self, num_tags: int):
         super(BertBilstmCrf, self).__init__()
         self.num_tags = num_tags
         self.bert = BertModel.from_pretrained("bert-base-multilingual-cased")
+        
+        # BiLSTM layer
         self.lstm = nn.LSTM(
-            self.bert.config.hidden_size,
-            128,
+            input_size=self.bert.config.hidden_size,
+            hidden_size=128,
             num_layers=2,
             bidirectional=True,
             batch_first=True,
             dropout=0.3,
         )
-        self.fc = nn.Linear(256, num_tags)
+        
+        # Fully connected layer
+        self.fc = nn.Linear(in_features=256, out_features=num_tags)
+        
+        # CRF layer
         self.crf = CRF(num_tags, batch_first=True)
 
     def forward(
-        self, ids: Tensor, mask: Tensor, token_type_ids: Tensor, target_tags: Tensor
+        self, input_ids: Tensor, attention_mask: Tensor, token_type_ids: Tensor, target_tags: Tensor
     ) -> Tuple[Tensor, Tensor]:
         """
         Forward pass for the model
         """
-        output = self.bert(ids, attention_mask=mask, token_type_ids=token_type_ids)
-        sequence_output = output.last_hidden_state
+        # BERT embeddings
+        bert_output = self.bert(input_ids, attention_mask=attention_mask, token_type_ids=token_type_ids)
+        sequence_output = bert_output.last_hidden_state
+        
+        # BiLSTM output
         lstm_output, _ = self.lstm(sequence_output)
+        
+        # Emissions from fully connected layer
         emissions = self.fc(lstm_output)
 
-        # Calculate loss
-        loss = -self.crf(emissions, target_tags, mask=mask.bool(), reduction="mean")
+        # Calculate loss using CRF
+        loss = -self.crf(emissions, target_tags, mask=attention_mask.bool(), reduction="mean")
         return emissions, loss
 
-    def decode(self, emissions: Tensor, mask: Tensor) -> List[List[int]]:
+    def decode(self, emissions: Tensor, attention_mask: Tensor) -> List[List[int]]:
         """
         Decode the emissions to get the predicted tags
         """
-        return self.crf.decode(emissions, mask=mask.bool())
+        return self.crf.decode(emissions, mask=attention_mask.bool())

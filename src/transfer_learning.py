@@ -9,30 +9,22 @@ from typing import Dict, Any
 from tqdm import tqdm
 from config import ExperimentConfig
 
-
+# Configuration for the experiment
 train_config = ExperimentConfig(
-    # ------- Train params ------- #
     num_tags=7,
     batch_size=48,
     patience=5,
     epochs=20,
     device=torch.device("cuda" if torch.cuda.is_available() else "cpu"),
-    # ------- Model params ------- #
     bert_learning_rate=0.00003,
     lstm_learning_rate=0.005,
     crf_learning_rate=0.0005,
-    # ------- Other params ------- #
     seed=42,
     low_resource_base_count=240,  # 300 * 0.8
     results_dir="src/experiments/results/objective_IV",
     model_dir="src/models/pretrained",
     logging_dir="src/experiments/logging/objective_IV",
 )
-
-
-
-
-
 
 class TransferLearningExperiment:
     def __init__(self, config: ExperimentConfig):
@@ -75,7 +67,6 @@ class TransferLearningExperiment:
 
         return results
 
-
 def main():
     config = train_config
     experiment = TransferLearningExperiment(config)
@@ -86,10 +77,9 @@ def main():
         results = experiment.run_experiment(augmentation_factor)
 
         # Save results
-        output_path = f"{config.results_dir}/2transfer_learning_performance_{augmentation_factor}.json"
+        output_path = f"{config.results_dir}/transfer_learning_performance_{augmentation_factor}.json"
         with open(output_path, "w") as outfile:
             json.dump(results, outfile)
-
 
 if __name__ == "__main__":
     main()

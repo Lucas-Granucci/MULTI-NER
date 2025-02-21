@@ -12,18 +12,16 @@ from models.BertCrf import BertCrf
 from models.BertBilstm import BertBilstm
 from models.BertBilstmCrf import BertBilstmCrf
 
+# Configuration for the experiment
 train_config = ExperimentConfig(
-    # ------- Train params ------- #
     num_tags=7,
     batch_size=48,
     patience=5,
     epochs=20,
     device=torch.device("cuda" if torch.cuda.is_available() else "cpu"),
-    # ------- Model params ------- #
     bert_learning_rate=0.00003,
     lstm_learning_rate=0.005,
     crf_learning_rate=0.00005,
-    # ------- Other params ------- #
     seed=42,
     low_resource_base_count=240,  # 300 * 0.8
     results_dir="src/experiments/results/objective_II",
@@ -45,8 +43,8 @@ class ModelExperiment:
 
     def run_experiment(self) -> Tuple[Dict[str, Any], Dict[str, Any]]:
         # Load language data
-        low_resource_langs = ["mg", "fo", "co", "hsb", "bh", "cv"]
-        language_data = self.data_manager.load_languages(low_resource_langs)
+        low_resource_languages = ["mg", "fo", "co", "hsb", "bh", "cv"]
+        language_data = self.data_manager.load_languages(low_resource_languages)
 
         results = {}
         logging = {}
@@ -55,10 +53,10 @@ class ModelExperiment:
             results[model_name] = {}
             logging[model_name] = {}
 
-            for lang, lang_df in language_data.items():
-                model_path = f"{self.config.model_dir}/{lang}_{model_name}_pretrained.pth"
+            for language, lang_df in language_data.items():
+                model_path = f"{self.config.model_dir}/{language}_{model_name}_pretrained.pth"
 
-                print(f"Testing model: {model_name} on language: '{lang}'")
+                print(f"Testing model: {model_name} on language: '{language}'")
 
                 # Train and evaluate model
                 train_f1, test_f1, logging_results = train_evaluate(
@@ -70,11 +68,11 @@ class ModelExperiment:
                 )
 
                 print(
-                    f"{model_name} on {lang}:    Train F1: {train_f1:.4f}    Test F1: {test_f1:.4f}"
+                    f"{model_name} on {language}:    Train F1: {train_f1:.4f}    Test F1: {test_f1:.4f}"
                 )
 
-                results[model_name][lang] = {"train_f1": train_f1, "test_f1": test_f1}
-                logging[model_name][lang] = logging_results
+                results[model_name][language] = {"train_f1": train_f1, "test_f1": test_f1}
+                logging[model_name][language] = logging_results
 
         return results, logging
 
@@ -83,11 +81,13 @@ def main():
     config = train_config
     experiment = ModelExperiment(config)
 
+    # Set random seed for reproducibility
     set_seed(config.seed)
 
+    # Run the experiment
     results, logging = experiment.run_experiment()
 
-    # Save results
+    # Save results to a JSON file
     output_path = f"{config.results_dir}/models_performance.json"
     with open(output_path, "w") as outfile:
         json.dump(results, outfile)

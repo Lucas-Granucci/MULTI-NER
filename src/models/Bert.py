@@ -18,28 +18,32 @@ class Bert(nn.Module):
         self.loss_fn = nn.CrossEntropyLoss()
 
     def forward(
-        self, ids: Tensor, mask: Tensor, token_type_ids: Tensor, target_tags: Tensor
+        self, input_ids: Tensor, attention_mask: Tensor, token_type_ids: Tensor, target_tags: Tensor
     ) -> Tuple[Tensor, Tensor]:
         """
         Forward pass for the model
         """
-        output = self.bert(ids, attention_mask=mask, token_type_ids=token_type_ids)
-        sequence_output = output.last_hidden_state
+        # Get BERT outputs
+        bert_output = self.bert(input_ids, attention_mask=attention_mask, token_type_ids=token_type_ids)
+        sequence_output = bert_output.last_hidden_state
+        
+        # Compute emissions
         emissions = self.fc(sequence_output)
 
         # Calculate loss
-        Critirion_Loss = nn.CrossEntropyLoss()
-        active_loss = mask.view(-1) == 1
+        criterion_loss = nn.CrossEntropyLoss()
+        active_loss = attention_mask.view(-1) == 1
         active_logits = emissions.view(-1, self.num_tags)
         active_labels = torch.where(
             active_loss,
             target_tags.view(-1),
-            torch.tensor(Critirion_Loss.ignore_index).type_as(target_tags),
+            torch.tensor(criterion_loss.ignore_index).type_as(target_tags),
         )
-        loss = Critirion_Loss(active_logits, active_labels)
+        loss = criterion_loss(active_logits, active_labels)
+        
         return emissions, loss
 
-    def decode(self, emissions: Tensor, mask: Tensor) -> Tensor:
+    def decode(self, emissions: Tensor, attention_mask: Tensor) -> Tensor:
         """
         Decode the emissions to get the predicted tags
         """

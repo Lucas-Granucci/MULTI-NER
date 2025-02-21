@@ -7,7 +7,10 @@ class LanguageDataManager:
     def __init__(self, base_path: str = "data/labeled"):
         self.base_path = base_path
 
-    def load_languages(self, languages: list):
+    def load_languages(self, languages: list) -> Dict:
+        """
+        Load data for multiple languages.
+        """
         language_data = {
             lang: self.load_data(f"{self.base_path}/{lang}_data.csv")
             for lang in languages
@@ -21,6 +24,9 @@ class LanguageDataManager:
         low_resource_count: int,
         high_resource_count: int,
     ) -> Dict:
+        """
+        Load data for low and high resource languages with specified counts.
+        """
         low_resource_data = {
             lang: self.load_data(f"{self.base_path}/{lang}_data.csv").head(
                 low_resource_count
@@ -37,11 +43,11 @@ class LanguageDataManager:
 
         return low_resource_data, high_resource_data
 
-    def load_data(self, data_dir: str) -> pd.DataFrame:
+    def load_data(self, file_path: str) -> pd.DataFrame:
         """
-        Load language data from csv into dataframe
+        Load language data from CSV file into DataFrame.
         """
-        data = pd.read_csv(data_dir)
+        data = pd.read_csv(file_path)
 
         def convert_to_list(string_representation: str) -> list:
             return ast.literal_eval(string_representation)
@@ -51,11 +57,11 @@ class LanguageDataManager:
 
         return data
 
-    def load_unlabeled_data(self, data_dir: str) -> pd.DataFrame:
+    def load_unlabeled_data(self, file_path: str) -> pd.DataFrame:
         """
-        Load unlabeled data from txt files into dataframe
+        Load unlabeled data from TXT file into DataFrame.
         """
-        with open(data_dir, "r", encoding="utf8") as file:
+        with open(file_path, "r", encoding="utf8") as file:
             sentences = file.readlines()
 
         def convert_to_tokens_list(sentence: str) -> list:
